@@ -127,5 +127,11 @@
   <ItemGroup>
     <Resource Include="View\farmacyicon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\endicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\minimize.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
