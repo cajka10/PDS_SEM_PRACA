@@ -1,0 +1,34 @@
+﻿<Window x:Class="Pharmacy_IS.View.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pharmacy_IS.View"
+        mc:Ignorable="d"
+        Title="Window1" Height="720" Width="1200" ResizeMode="NoResize" WindowStyle="None">
+    <Grid HorizontalAlignment="Left" Height="740" Margin="0" VerticalAlignment="Top" Width="1200" Background="white" RenderTransformOrigin="0.495,2.823">
+        <Grid HorizontalAlignment="Left" Height="70" Margin="0" VerticalAlignment="Top" Width="1200" Background="#FF02369C" RenderTransformOrigin="0.495,2.823" MouseDown="Grid_MouseDown">
+
+            <Image Height="35" VerticalAlignment="Bottom" Width="35" HorizontalAlignment="Left" Margin="30,0,0,15.4" Source="farmacyicon.png"/>
+            <Label Content="Le Lekáreň" Height="35" VerticalAlignment="Top" FontFamily="Arial" FontWeight="Bold" FontSize="24" Width="140" Margin="75,20,0,0" HorizontalAlignment="Left" Foreground="White"/>
+            <Button Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1160,10,0,0" Padding="0" FontFamily="Arial" FontSize="50" FontWeight="Bold" Foreground="White" Background="{x:Null}" Click="Button_Click_1" BorderBrush="{x:Null}"/>
+            <Button Content="_" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1100,-18,0,0" Padding="0" FontFamily="Arial" FontSize="50" FontWeight="Bold" Foreground="White" Background="{x:Null}" Click="Button_Click_2" BorderBrush="{x:Null}" VerticalContentAlignment="Top" Height="80"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="670
+              " Margin="0,74,0,0" VerticalAlignment="Top" Width="1200" Background="white" RenderTransformOrigin="0.495,2.823" MouseDown="Grid_MouseDown">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Content="User Name:" HorizontalAlignment="Center" Margin="-140,180,0,0" VerticalAlignment="Top" FontSize="18" FontFamily="Arial" FontWeight="Bold" Width="110" Height="30" HorizontalContentAlignment="Center"/>
+            <Label Content="Login" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,123,0,0" FontFamily="Arial Black" FontSize="24" Width="85" Height="40" FontWeight="Bold"/>
+            <TextBox HorizontalAlignment="Center" Height="30" Margin="0,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" BorderBrush="#FF0536C8" SelectionBrush="#FF02369C" FontFamily="Arial" FontSize="18" HorizontalContentAlignment="Center"/>
+            <Label Content="Password:" HorizontalAlignment="Center" Margin="-140,270,0,0" VerticalAlignment="Top" FontSize="18" FontFamily="Arial" FontWeight="Bold" Width="110" Height="30" HorizontalContentAlignment="Center"/>
+            <PasswordBox HorizontalAlignment="Center" Margin="0,305,0,0" VerticalAlignment="Top" Width="250" Height="30" FontFamily="Arial" FontSize="18" SelectionBrush="#FF02369C" BorderBrush="#FF02369C" HorizontalContentAlignment="Center"/>
+            <Button Content="Login" HorizontalAlignment="Center" Margin="0,355,0,0" VerticalAlignment="Top" Width="270" Height="35" Background="#FF02369C" FontFamily="Arial" FontSize="24" FontWeight="Bold" Click="Button_Click" Foreground="#FFFDFDFD"/>
+            <Image Height="50" VerticalAlignment="Bottom" Width="50" HorizontalAlignment="Center" Margin="0,0,0,569" Source="farmacyicon.png"/>
+
+        </Grid>
+    </Grid>
+
+
+</Window>
