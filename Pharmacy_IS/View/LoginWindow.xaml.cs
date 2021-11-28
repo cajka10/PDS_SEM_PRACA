@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Configuration;
 using Oracle.ManagedDataAccess.Client;
+using Pharmacy_IS.Model;
 
 namespace Pharmacy_IS.View
 {
@@ -22,14 +23,11 @@ namespace Pharmacy_IS.View
     /// </summary>
     public partial class LoginWindow : Window
     {
-        private LoginService _loginService;
-        private OracleConnection _conn;
-        
+        private LoginService _loginService;        
         public LoginWindow()
         {
             InitializeComponent();
             _loginService = new LoginService();
-            this.setConnection();
 
         }
 
@@ -52,34 +50,22 @@ namespace Pharmacy_IS.View
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            _loginService.LogIn(this.UserNameTextBox.Text, this.PasswordTextBox.Password);
-        }
-
-        private void setConnection()
-        {
-            string connString = ConfigurationManager.ConnectionStrings["OrclConnectionString"].ConnectionString;
-            _conn = new OracleConnection(connString);
             try
             {
-                _conn.Open();
-            //    using (OracleCommand command = new OracleCommand())
-            //    {
-            //        command.Connection = _conn;
-            //        command.CommandText = "select * from grofcik5.my_table";
-            //        command.CommandType = System.Data.CommandType.Text;
-            //        OracleDataReader reader = command.ExecuteReader();
-            //        while (reader.Read())
-            //        {
-            //            Console.WriteLine("****************************************");
-            //            Console.WriteLine(reader[0] + " - " + reader[1] + reader[2]);
-            //            Console.WriteLine("****************************************");
-            //        }
-            //    }
+                _loginService.LogIn(this.UserNameTextBox.Text, this.PasswordTextBox.Password);
+
             }
-            catch (Exception ex)
+            catch (NoSuchUserException ex)
             {
                 Console.WriteLine(ex.Message);
-                throw;
+                MessageBoxResult result = MessageBox.Show("Zadaný user neexistuje.", "Upozornenie", MessageBoxButton.OK, MessageBoxImage.Information);
+                
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBoxResult result = MessageBox.Show(ex.Message, "Chyba", MessageBoxButton.OK, MessageBoxImage.Information);
+
             }
         }
     }
