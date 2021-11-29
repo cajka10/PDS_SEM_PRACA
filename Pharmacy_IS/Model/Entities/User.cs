@@ -14,5 +14,10 @@
             UserName = userName;
             Role = role;
         }
+
+        public string ToString()
+        {
+            return this.UserName + " - " + Role.ToString();
+        }
     }
 }

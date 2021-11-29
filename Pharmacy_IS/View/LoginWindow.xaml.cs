@@ -54,6 +54,7 @@ namespace Pharmacy_IS.View
             {
                 if (_loginService.LogIn(this.UserNameTextBox.Text, this.PasswordTextBox.Password))
                 {
+                    Console.WriteLine("Current logged user: " + ((LoggedUser)App.Current.Properties["LoggedUser"]).ToString());
                     MainWindow main = new MainWindow();
                     main.Show();
                 }           

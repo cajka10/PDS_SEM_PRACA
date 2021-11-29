@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pharmacy_IS.ViewModel.Service;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,9 @@ namespace Pharmacy_IS
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            this.Properties["LoggedUser"] = new LoggedUser();
+        }
     }
 }

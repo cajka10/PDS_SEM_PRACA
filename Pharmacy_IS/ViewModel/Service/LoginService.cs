@@ -13,14 +13,14 @@ namespace Pharmacy_IS.ViewModel.Service
     class LoginService
     {
         private OracleConnection _conn;
-
+        private LoggedUser _user;
         public LoginService()
         {
             this.setConnection();
+            _user = new LoggedUser();
         }
 
-        //return true if password matches with psswd in db
-        //TODO set Current Logged User
+
         public bool LogIn(string userName, string password)
         {
             PasswordUtils utils = new PasswordUtils();
@@ -30,27 +30,37 @@ namespace Pharmacy_IS.ViewModel.Service
             {
                 throw new NoSuchUserException("Wrong user name.");
             }
-            return (utils.HashString(password).Equals(hashedDBPassword));
+            bool output = utils.HashString(password).Equals(hashedDBPassword);
+            if (output)
+                App.Current.Properties["LoggedUser"] = _user;
+            return output;
         }
 
         private string getUserPassword(string username)
         {
+           
             try
             {
                 _conn.Open();
                 OracleCommand command = new OracleCommand() { Connection = _conn};
-                command.CommandText = $"select password from cajka10.person where USER_NAME like '{username}'";
+                command.CommandText = $"select password, id_role, user_name from cajka10.person where USER_NAME like '{username}'";
                 command.CommandType = System.Data.CommandType.Text;
                 OracleDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
+                    _user.Role = (UserRole)Convert.ToInt32(reader[1]);
+                    _user.UserName = username;
                     return Convert.ToString(reader[0]);
-                }
+                }             
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 throw;
+            }
+            finally
+            {
+                _conn.Close();
             }
             return null;
         }
@@ -68,5 +78,7 @@ namespace Pharmacy_IS.ViewModel.Service
                 throw;
             }
         }
+
+        
     }
 }
