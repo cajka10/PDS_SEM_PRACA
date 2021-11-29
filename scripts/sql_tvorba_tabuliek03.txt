@@ -1,0 +1,100 @@
+Create or replace type med_type as object
+(
+	type Varchar2(50)
+);
+/
+
+Create or replace type ingredients
+ as table of Varchar2(20);
+/
+
+Create table manufacturer (
+	id_man Varchar2(30) PRIMARY KEY,
+	name Varchar2(100) NOT NULL,
+	address Varchar2(200) NOT NULL,
+	country Varchar2(30)
+) 
+/
+
+Create table person_role (
+	id_role Number generated always as identity PRIMARY KEY,
+	role_name Varchar2(30)
+) 
+/
+
+Create table person (
+	id_user Number generated always as identity PRIMARY KEY,
+	id_role Number NOT NULL,
+	user_name Varchar2(30) NOT NULL,
+	password Varchar2(128) NOT NULL,
+	name Varchar2(30) NOT NULL,
+	foreign key (id_role) references person_role(id_role)
+) 
+/
+
+Create table sales_history (
+	id_sale Number generated always as identity PRIMARY KEY,
+	id_user Number NOT NULL,
+    	sales_date Date NOT NULL,
+	price Float NOT NULL,
+    	foreign key (id_user) references person(id_user)
+) 
+/
+
+Create table e_prescription (
+	id_pres Number generated always as identity PRIMARY KEY,
+	rc_patient Varchar2(11) NOT NULL,
+	prescription_date Date NOT NULL,
+	code_doctor Number,
+	insurrance_num Number
+) 
+/
+
+Create table medicament (
+	id_med Number generated always as identity PRIMARY KEY,
+	id_man Varchar2(30) NOT NULL,
+	name Varchar2(100) NOT NULL,
+	is_prescribed Char(1) NOT NULL,
+	type med_type NOT NULL,
+	quantity Number NOT NULL,
+	image Blob,
+	active_ingredients ingredients,
+	expiration_date Date,
+	amount_unit Varchar2(50),
+	description Varchar2(50),
+	foreign key (id_man) references manufacturer(id_man)
+) nested table ingredients store as ingredients_tab;
+/
+
+Create table price_list (
+	id_price Number generated always as identity PRIMARY KEY,
+	id_med Number NOT NULL,
+	price Float NOT NULL,
+	discount Char(1) NOT NULL,
+	date_from Date NOT NULL,
+	date_to Date, 
+    	foreign key (id_med) references medicament(id_med)
+) 
+/
+
+Create table sale_item (
+	id_pres Number NOT NULL,
+	id_med Number NOT NULL,
+	id_sale Number NOT NULL,
+	quantity Number NOT NULL,
+	description Varchar2(200),
+	PRIMARY KEY (id_pres, id_med),
+	foreign key (id_pres) references e_prescription(id_pres),
+	foreign key (id_med) references medicament(id_med),
+	foreign key (id_sale) references sales_history(id_sale)
+)
+/
+
+grant all on manufacturer to novakova25, cajka10, novotnak1;
+grant all on price_list to novakova25, cajka10, novotnak1;
+grant all on medicament to novakova25, cajka10, novotnak1;
+grant all on person_role to novakova25, cajka10, novotnak1;
+grant all on person to novakova25, cajka10, novotnak1;
+grant all on e_prescription to novakova25, cajka10, novotnak1;
+grant all on sale_item to novakova25, cajka10, novotnak1;
+grant all on sales_history to novakova25, cajka10, novotnak1;
