@@ -16,7 +16,7 @@ namespace Pharmacy_IS.ViewModel.Service
 
         public LoginService()
         {
-            //this.setConnection();
+            this.setConnection();
         }
 
         //return true if password matches with psswd in db
@@ -25,13 +25,12 @@ namespace Pharmacy_IS.ViewModel.Service
         {
             PasswordUtils utils = new PasswordUtils();
             string temp = utils.HashString(password);
-            //string hashedDBPassword = this.getUserPassword(userName);
-            //if (hashedDBPassword == null)
-            //{
-            //    throw new NoSuchUserException("Wrong user name.");
-            //}
-            //return (utils.HashString(password).Equals(hashedDBPassword));
-            return true;
+            string hashedDBPassword = this.getUserPassword(userName);
+            if (hashedDBPassword == null)
+            {
+                throw new NoSuchUserException("Wrong user name.");
+            }
+            return (utils.HashString(password).Equals(hashedDBPassword));
         }
 
         private string getUserPassword(string username)
@@ -40,7 +39,7 @@ namespace Pharmacy_IS.ViewModel.Service
             {
                 _conn.Open();
                 OracleCommand command = new OracleCommand() { Connection = _conn};
-                command.CommandText = $"select password from user where username like {username}";
+                command.CommandText = $"select password from cajka10.person where USER_NAME like '{username}'";
                 command.CommandType = System.Data.CommandType.Text;
                 OracleDataReader reader = command.ExecuteReader();
                 if (reader.Read())
@@ -62,7 +61,6 @@ namespace Pharmacy_IS.ViewModel.Service
             try
             {
                 _conn = new OracleConnection(connString);
-                _conn.Open();
             }
             catch (Exception ex)
             {

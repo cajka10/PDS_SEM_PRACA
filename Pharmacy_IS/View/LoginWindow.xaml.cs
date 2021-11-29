@@ -52,8 +52,11 @@ namespace Pharmacy_IS.View
         {
             try
             {
-                _loginService.LogIn(this.UserNameTextBox.Text, this.PasswordTextBox.Password);
-
+                if (_loginService.LogIn(this.UserNameTextBox.Text, this.PasswordTextBox.Password))
+                {
+                    MainWindow main = new MainWindow();
+                    main.Show();
+                }           
             }
             catch (NoSuchUserException ex)
             {
