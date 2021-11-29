@@ -1,6 +1,6 @@
 Create or replace type med_type as object
 (
-	type varchar2(50);
+	type varchar2(50)
 );
 /
 
@@ -24,7 +24,7 @@ Create table person (
 	user_name Varchar2(30) NOT NULL,
 	password Varchar2(128) NOT NULL,
 	name Varchar2(30) NOT NULL,
-	foreign key (id_role) references user_role(id_role)
+	foreign key (id_role) references person_role(id_role)
 ) 
 /
 
@@ -57,7 +57,7 @@ Create table medicament (
 	expiration_date Date,
 	amount_unit Varchar2(50),
 	description Varchar2(50),
-	foreign key (id_med) references medicament(id_med)
+	foreign key (id_man) references manufacturer(id_man)
 )
 /
 
@@ -66,7 +66,7 @@ Create table price_list (
 	id_med Number NOT NULL,
 	price Float NOT NULL,
 	discount Char(1) NOT NULL,
-	date_from Date (40) NOT NULL,
+	date_from Date NOT NULL,
 	date_to Date, 
     	foreign key (id_med) references medicament(id_med)
 ) 
