@@ -5,17 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pharmacy_IS.View"
         mc:Ignorable="d"
-        Title="Window1" Height="720" Width="1200" ResizeMode="NoResize" WindowStyle="None">
-    <Grid HorizontalAlignment="Left" Height="740" Margin="0" VerticalAlignment="Top" Width="1200" Background="white" RenderTransformOrigin="0.495,2.823">
-        <Grid HorizontalAlignment="Left" Height="70" Margin="0" VerticalAlignment="Top" Width="1200" RenderTransformOrigin="0.495,2.823" MouseDown="Grid_MouseDown" Background="#FF02369C">
+        Title="Window1" Height="625" Width="880" ResizeMode="NoResize" WindowStyle="None">
+    <Grid HorizontalAlignment="Left" Height="625" Margin="0" VerticalAlignment="Top" Width="880" Background="white" RenderTransformOrigin="0.495,2.823">
+        <Grid HorizontalAlignment="Left" Height="50" Margin="0" VerticalAlignment="Top" Width="880" RenderTransformOrigin="0.495,2.823" MouseDown="Grid_MouseDown" Background="#FF02369C">
 
-            <Image Height="35" VerticalAlignment="Bottom" Width="35" HorizontalAlignment="Left" Margin="30,0,0,15.4" Source="farmacyicon.png"/>
-            <Label Content="Le Lekáreň" Height="35" VerticalAlignment="Top" FontFamily="Arial" FontWeight="Bold" FontSize="24" Width="140" Margin="75,20,0,0" HorizontalAlignment="Left" Foreground="White"/>
-            <Image x:Name="buttonExit" Width="40" HorizontalAlignment="Left" Margin="1145,10,0,10" Source="endicon.png" RenderTransformOrigin="32.571,0.149" MouseDown="ButtonClose_Clicked" Height="40" />
-            <Image x:Name="buttonMin" Width="40" HorizontalAlignment="Left" Margin="1095,15.2,0,14.8" Source="minimize.png" RenderTransformOrigin="32.571,0.149" MouseDown="ButtonMin_Clicked" Height="40" />
+            <Image Height="30" VerticalAlignment="Bottom" Width="30" HorizontalAlignment="Left" Margin="10,10,0,10" Source="farmacyicon.png"/>
+            <Label Content="Le Lekáreň" Height="35" VerticalAlignment="Top" FontFamily="Arial" FontWeight="Bold" FontSize="24" Width="140" Margin="45,10,0,10" HorizontalAlignment="Left" Foreground="White"/>
+            <Image x:Name="buttonExit" Width="30" HorizontalAlignment="Left" Margin="840,10,0,10" Source="endicon.png" RenderTransformOrigin="32.571,0.149" MouseDown="ButtonClose_Clicked" Height="30" />
+            <Image x:Name="buttonMin" Width="30" HorizontalAlignment="Left" Margin="800,10,0,10" Source="minimize.png" RenderTransformOrigin="32.571,0.149" MouseDown="ButtonMin_Clicked" Height="30" />
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="670
-              " Margin="0,74,0,0" VerticalAlignment="Top" Width="1200" RenderTransformOrigin="0.495,2.823" MouseDown="Grid_MouseDown" Background="White">
+        <Grid HorizontalAlignment="Left" Height="570" Margin="0,50,0,0" VerticalAlignment="Top" Width="878" RenderTransformOrigin="0.495,2.823" MouseDown="Grid_MouseDown" Background="White">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
@@ -25,7 +24,7 @@
             <Label Content="Password:" HorizontalAlignment="Center" Margin="-140,270,0,0" VerticalAlignment="Top" FontSize="18" FontFamily="Arial" FontWeight="Bold" Width="110" Height="30" HorizontalContentAlignment="Center"/>
             <PasswordBox x:Name="PasswordTextBox" HorizontalAlignment="Center" Margin="0,305,0,0" VerticalAlignment="Top" Width="250" Height="30" FontFamily="Arial" FontSize="18" SelectionBrush="#FF02369C" BorderBrush="#FF02369C" HorizontalContentAlignment="Center"/>
             <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Center" Margin="0,355,0,0" VerticalAlignment="Top" Width="270" Height="35" Background="#FF02369C" FontFamily="Arial" FontSize="24" FontWeight="Bold" Click="LoginButton_Click" Foreground="#FFFDFDFD"/>
-            <Image Height="50" VerticalAlignment="Bottom" Width="50" HorizontalAlignment="Center" Margin="0,0,0,569" Source="farmacyicon.png"/>
+            <Image Height="50" VerticalAlignment="Bottom" Width="50" HorizontalAlignment="Center" Margin="413,100,415,700" Source="farmacyicon.png"/>
 
         </Grid>
     </Grid>
