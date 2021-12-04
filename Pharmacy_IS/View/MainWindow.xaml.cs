@@ -94,6 +94,11 @@ namespace Pharmacy_IS
 
         }
 
+        private void Label_allMeds_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
         private void receiptsBarHeightChange(object sender, MouseButtonEventArgs e)
         {
             BitmapImage bi = new BitmapImage();

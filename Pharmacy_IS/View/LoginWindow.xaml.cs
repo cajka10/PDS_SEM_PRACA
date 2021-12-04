@@ -56,6 +56,7 @@ namespace Pharmacy_IS.View
                 {
                     Console.WriteLine("Current logged user: " + ((LoggedUser)App.Current.Properties["LoggedUser"]).ToString());
                     MainWindow main = new MainWindow();
+                    this.Close();
                     main.Show();
                 }           
             }

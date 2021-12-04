@@ -67,9 +67,16 @@
     <Compile Include="ViewModel\Service\LoginService.cs" />
     <Compile Include="Model\Entities\User.cs" />
     <Compile Include="ViewModel\Utils\PasswordUtils.cs" />
+    <Compile Include="View\Controls\MedicamentsUC.xaml.cs">
+      <DependentUpon>MedicamentsUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\Controls\MedicamentsUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -132,7 +139,9 @@
     <Resource Include="View\menuicon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\arrowicon.png" />
+    <Content Include="View\arrowicon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="minimize.png" />

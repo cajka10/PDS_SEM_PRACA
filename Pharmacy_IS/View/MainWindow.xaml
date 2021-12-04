@@ -3,12 +3,38 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:view="clr-namespace:Pharmacy_IS.View.Controls"
         xmlns:local="clr-namespace:Pharmacy_IS"
         mc:Ignorable="d"
         Title="MainWindow" Height="730" Width="1200" ResizeMode="NoResize" WindowStyle="None">
-    <Grid HorizontalAlignment="Left" Height="740" Margin="0" VerticalAlignment="Top" Width="1200" Background="white" RenderTransformOrigin="0.495,2.823">
 
-        <Grid HorizontalAlignment="Left" Height="50" Margin="0" VerticalAlignment="Top" Width="1200" RenderTransformOrigin="0.495,2.823" MouseDown="Grid_MouseDown" Background="#FF02369C">
+    <Grid HorizontalAlignment="Left" Height="740" Margin="0" VerticalAlignment="Top" Width="1200">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="690*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250*"/>
+            <ColumnDefinition Width="950*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid 
+            HorizontalAlignment="Left"
+            Height="690" 
+            Margin="0"
+            VerticalAlignment="Top"
+            Width="950"
+            Grid.Column="2"
+            Grid.Row="2">
+            <view:MedicamentsUC 
+                         x:Name="MedicamentsUC" 
+                         Margin="0, 0, 0, 0" 
+                         Visibility="Visible" 
+                         RenderTransformOrigin="0.595,0.425">
+            </view:MedicamentsUC>
+        </Grid>
+
+        <Grid HorizontalAlignment="Left" Height="50" Margin="0" VerticalAlignment="Top" Width="1200" RenderTransformOrigin="0.495,2.823" MouseDown="Grid_MouseDown" Background="#FF02369C" Grid.ColumnSpan="2">
 
             <Image Height="30" VerticalAlignment="Bottom" Width="30" HorizontalAlignment="Left" Margin="10,10,0,10" Source="farmacyicon.png" OpacityMask="#FF02369C"/>
             <Label Content="Le Lekáreň" Height="35" VerticalAlignment="Top" FontFamily="Arial" FontWeight="Bold" FontSize="24" Width="140" Margin="45,10,0,10" HorizontalAlignment="Left" Foreground="White"/>
@@ -46,5 +72,6 @@
                 </Grid>
             </Grid>
         </Grid>
+
     </Grid>
 </Window>

@@ -37,8 +37,7 @@ namespace Pharmacy_IS.ViewModel.Service
         }
 
         private string getUserPassword(string username)
-        {
-           
+        {          
             try
             {
                 _conn.Open();
