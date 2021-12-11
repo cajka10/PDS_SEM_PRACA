@@ -1,0 +1,8 @@
+drop table sale_item;
+drop table price_list;
+drop table medicament;
+drop table e_prescription;
+drop table sales_history;
+drop table person;
+drop table person_role;
+drop table manufacturer;

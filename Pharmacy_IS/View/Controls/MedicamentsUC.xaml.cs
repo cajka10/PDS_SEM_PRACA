@@ -13,16 +13,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Pharmacy_IS
+namespace Pharmacy_IS.View.Controls
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MedicamentsUC.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MedicamentsUC : UserControl
     {
-        public MainWindow()
+        public MedicamentsUC()
         {
             InitializeComponent();
+        }
+
+        private void insertButton_Click(object sender, RoutedEventArgs e)
+        {
+            InsertMedWindow insertWindow = new InsertMedWindow();
+            insertWindow.Show();
         }
     }
 }

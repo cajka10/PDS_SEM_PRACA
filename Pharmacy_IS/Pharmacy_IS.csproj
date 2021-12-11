@@ -38,7 +38,10 @@
       <HintPath>..\packages\Oracle.ManagedDataAccess.12.1.24160419\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -48,16 +51,40 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Compile Include="Model\Entities\UserRole.cs" />
+    <Compile Include="Model\Exceptions\NoSuchUserException.cs" />
+    <Compile Include="ViewModel\Service\LoginService.cs" />
+    <Compile Include="Model\Entities\User.cs" />
+    <Compile Include="ViewModel\Utils\PasswordUtils.cs" />
+    <Compile Include="View\Controls\MedicamentsUC.xaml.cs">
+      <DependentUpon>MedicamentsUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\InsertMedWindow.xaml.cs">
+      <DependentUpon>InsertMedWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\Controls\MedicamentsUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\InsertMedWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -65,10 +92,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -100,9 +131,45 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="ViewModel\" />
-    <Folder Include="View\" />
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\farmacyicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\endicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\menuicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="View\arrowicon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="endicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="farmacyicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="menuicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="arrowicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\pillicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\receipticon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
