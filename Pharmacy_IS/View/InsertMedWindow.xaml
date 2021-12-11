@@ -8,7 +8,7 @@
         Title="InsertMedWindow" Height="500" Width="450" ResizeMode="NoResize" WindowStyle="None">
     <Grid>
         <Grid HorizontalAlignment="Left" Height="25" Margin="0,0,0,0" VerticalAlignment="Top" Width="450"  MouseDown="Grid_MouseDown" Background="#FF02369C">
-            <Label Content="New Medicament" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,00,0" FontFamily="Arial" Foreground="White" FontWeight="Bold"/>
+            <Label x:Name="heading" Content="New Medicament" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,00,0" FontFamily="Arial" Foreground="White" FontWeight="Bold"/>
             <Image x:Name="buttonExit" Width="15" HorizontalAlignment="Left" Margin="425,0,10,0" Source="endicon.png" MouseDown="ButtonClose_Clicked" Height="15" />
             <Image x:Name="buttonMin" Width="15" HorizontalAlignment="Left" Margin="405,0,10,0" Source="minimize.png"  MouseDown="ButtonMin_Clicked" Height="15" />
         </Grid>
@@ -25,15 +25,13 @@
 
         <TextBox x:Name="nameText" HorizontalAlignment="Left" Height="20" Margin="150,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="250" FontFamily="Arial"/>
         <ComboBox x:Name="manufacturer" HorizontalAlignment="Left" Height="20" Margin="150,57,0,0"  VerticalAlignment="Top" Width="250" FontFamily="Arial"/>
-        <TextBox x:Name="amount" HorizontalAlignment="Left" Height="20" Margin="150,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="250" FontFamily="Arial"/>
-        <ComboBox x:Name="medType" HorizontalAlignment="Left" Height="20" Margin="150,107,0,0"  VerticalAlignment="Top" Width="250" FontFamily="Arial"/>
+        <TextBox x:Name="amount" HorizontalAlignment="Left" Height="20" Margin="150,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="250" FontFamily="Arial" />
+        <TextBox x:Name="medType" HorizontalAlignment="Left" Height="20" Margin="150,107,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="250" FontFamily="Arial"/>
         <TextBox x:Name="medImage" HorizontalAlignment="Left" Height="20" Margin="150,132,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="250" FontFamily="Arial"/>
+        <TextBox x:Name="ingredients" HorizontalAlignment="Left" Height="120" Margin="150,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" FontFamily="Arial"/>
         <CheckBox x:Name="medPrescribed" HorizontalAlignment="Left" Margin="150,284,0,0" VerticalAlignment="Top" FontFamily="Arial"/>
         <TextBox HorizontalAlignment="Left" Height="120" Margin="150,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" FontFamily="Arial"/>
-        <Button Content="Insert" HorizontalAlignment="Left" Margin="280,439,0,0" VerticalAlignment="Top" Width="120" FontFamily="Arial" FontWeight="Bold" FontSize="14" Click="Button_Click"/>
-        <ListBox HorizontalAlignment="Left" Height="100" Margin="70,180,0,0" VerticalAlignment="Top" Width="150"/>
-        <ListBox HorizontalAlignment="Left" Height="100" Margin="250,180,0,0" VerticalAlignment="Top" Width="150"/>
-        <Label Content=">>" HorizontalAlignment="Left" Margin="222,220,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="confirmButton" Content="Insert" HorizontalAlignment="Left" Margin="280,439,0,0" VerticalAlignment="Top" Width="120" FontFamily="Arial" FontWeight="Bold" FontSize="14" Click="Button_Click"/>
 
 
     </Grid>

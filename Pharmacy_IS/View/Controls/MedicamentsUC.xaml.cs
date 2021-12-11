@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pharmacy_IS.Model.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,8 +28,31 @@ namespace Pharmacy_IS.View.Controls
 
         private void insertButton_Click(object sender, RoutedEventArgs e)
         {
-            InsertMedWindow insertWindow = new InsertMedWindow();
+            InsertMedWindow insertWindow = new InsertMedWindow(State.Adding);
             insertWindow.Show();
+        }
+
+        private void updateButton_Click(object sender, RoutedEventArgs e)
+        {
+            int index = this.table.SelectedIndex;
+            if(index == -1)
+            {
+                MessageBox.Show("You need to select item from the table");
+                return;
+            }
+            InsertMedWindow insertWindow = new InsertMedWindow(State.Editing);
+            insertWindow.Show();
+        }
+
+        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            int index = this.table.SelectedIndex;
+            if (index == -1)
+            {
+                MessageBox.Show("You need to select item from the table");
+                return;
+            }
+            //TODO vykonat vymazanie refreshnut tabulku
         }
     }
 }

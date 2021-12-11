@@ -22,6 +22,7 @@ namespace Pharmacy_IS
     {
         bool menuColapsed = false;
         bool medsBarColapsed,receiptsBarColapsed;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -32,6 +33,7 @@ namespace Pharmacy_IS
             receiptsBarColapsed = true;
             receiptsGrid.Height = medsGridHeader.Height;
             receiptsGrid.Margin = new Thickness(0, 45, 0, 0);
+ 
 
         }
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -97,6 +99,18 @@ namespace Pharmacy_IS
         private void Label_allMeds_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
+        }
+
+        private void showAllMeds(object sender, MouseButtonEventArgs e)
+        {
+            this.MedicamentsUC.Visibility = Visibility.Visible;
+            this.StorageUC.Visibility = Visibility.Hidden;
+        }
+
+        private void showStorage(object sender, MouseButtonEventArgs e)
+        {
+            this.MedicamentsUC.Visibility = Visibility.Hidden;
+            this.StorageUC.Visibility = Visibility.Visible;
         }
 
         private void receiptsBarHeightChange(object sender, MouseButtonEventArgs e)

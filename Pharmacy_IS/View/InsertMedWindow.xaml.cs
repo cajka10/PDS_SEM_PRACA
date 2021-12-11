@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Pharmacy_IS.Model.Entities;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
 namespace Pharmacy_IS.View
 {
     /// <summary>
@@ -19,14 +9,66 @@ namespace Pharmacy_IS.View
     /// </summary>
     public partial class InsertMedWindow : Window
     {
-        public InsertMedWindow()
+        private State state;
+
+        public InsertMedWindow(State p_state)
         {
+            state = p_state;
             InitializeComponent();
+            if (state == State.Editing)
+            {
+                this.heading.Content = "Editing Medicament";
+                this.confirmButton.Content = "Confirm";
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if(this.nameText.Text.Length == 0)
+            {
+                MessageBox.Show("You need to fill name field");
+                return;
+            }
+            if (this.manufacturer.Text.Length == 0)
+            {
+                MessageBox.Show("You need to fill manufacturer field");
+                return;
+            }
+            if (this.amount.Text.Length == 0)
+            {
+                MessageBox.Show("You need to fill amount field");
+                return;
+            }
+            int numAmount;
 
+            try
+            {
+                numAmount = Int32.Parse(this.amount.Text);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Amount value must be number");
+                return;
+            }
+
+            if (this.medType.Text.Length == 0)
+            {
+                MessageBox.Show("You need to fill type field");
+                return;
+            }
+            if (this.medImage.Text.Length == 0)
+            {
+                MessageBox.Show("You need to fill image field");
+                return;
+            }
+            if (this.ingredients.Text.Length == 0)
+            {
+                MessageBox.Show("You need to fill image field");
+                return;
+            }
+
+            //TODO spracovanie do objektu/vloženie
+            //cez query + spracovanie obsahu pola ingredients do nejakeho listu
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
