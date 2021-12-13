@@ -1,4 +1,5 @@
 ﻿using Pharmacy_IS.Model.Entities;
+using Pharmacy_IS.ViewModel.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,14 +22,20 @@ namespace Pharmacy_IS.View.Controls
     /// </summary>
     public partial class MedicamentsUC : UserControl
     {
+        private MedicamentService _medicamentService;
         public MedicamentsUC()
         {
             InitializeComponent();
+            _medicamentService = new MedicamentService();
         }
 
-        private void insertButton_Click(object sender, RoutedEventArgs e)
+        private void InsertButton_Click(object sender, RoutedEventArgs e)
         {
             InsertMedWindow insertWindow = new InsertMedWindow(State.Adding);
+            if (insertWindow.DialogResult == true)
+            {
+                
+            }
             insertWindow.Show();
         }
 

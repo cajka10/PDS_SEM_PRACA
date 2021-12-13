@@ -67,6 +67,7 @@
     <Compile Include="Model\Exceptions\NoSuchUserException.cs" />
     <Compile Include="ViewModel\Service\LoginService.cs" />
     <Compile Include="Model\Entities\User.cs" />
+    <Compile Include="ViewModel\Service\MedicamentService.cs" />
     <Compile Include="ViewModel\Utils\PasswordUtils.cs" />
     <Compile Include="View\Controls\MedicamentsUC.xaml.cs">
       <DependentUpon>MedicamentsUC.xaml</DependentUpon>

@@ -93,7 +93,6 @@ namespace Pharmacy_IS
                 receiptsGrid.Margin = new Thickness(0, 45, 0, 0);
 
             }
-
         }
 
         private void Label_allMeds_MouseDown(object sender, MouseButtonEventArgs e)

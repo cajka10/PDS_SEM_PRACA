@@ -11,6 +11,8 @@ namespace Pharmacy_IS.View
     {
         private State state;
 
+        public Medicament Medicament { get; set; }
+
         public InsertMedWindow(State p_state)
         {
             state = p_state;
@@ -66,6 +68,13 @@ namespace Pharmacy_IS.View
                 MessageBox.Show("You need to fill image field");
                 return;
             }
+
+            this.Medicament.MedName = this.nameText.Text;
+            this.Medicament.ManufacturerId = (int)this.manufacturer.SelectedValue;
+            this.Medicament.Amount = int.TryParse(this.amount.Text, out int temp) ? 0 : temp;
+            this.Medicament.MedType = this.medType.Text;
+            this.Medicament.ActiveIngredients = this.ingredients.Text;
+            this.Medicament.Description = this.DesctiptionTextBox.Text;
 
             //TODO spracovanie do objektu/vloženie
             //cez query + spracovanie obsahu pola ingredients do nejakeho listu
