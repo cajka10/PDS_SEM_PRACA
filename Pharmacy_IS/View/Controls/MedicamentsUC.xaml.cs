@@ -27,6 +27,15 @@ namespace Pharmacy_IS.View.Controls
         {
             InitializeComponent();
             _medicamentService = new MedicamentService();
+            this.Reload();
+
+        }
+
+        private void Reload()
+        {         
+            var dt = this._medicamentService.GetMedicaments();
+            this.MedicamentDataGrid.DataContext = dt;
+            this.MedicamentDataGrid.ItemsSource = dt.DefaultView;
         }
 
         private void InsertButton_Click(object sender, RoutedEventArgs e)
@@ -34,14 +43,14 @@ namespace Pharmacy_IS.View.Controls
             InsertMedWindow insertWindow = new InsertMedWindow(State.Adding);
             if (insertWindow.DialogResult == true)
             {
-                
+                _medicamentService.InsertMedicament(insertWindow.Medicament);
             }
             insertWindow.Show();
         }
 
         private void updateButton_Click(object sender, RoutedEventArgs e)
         {
-            int index = this.table.SelectedIndex;
+            int index = this.MedicamentDataGrid.SelectedIndex;
             if(index == -1)
             {
                 MessageBox.Show("You need to select item from the table");
@@ -53,7 +62,7 @@ namespace Pharmacy_IS.View.Controls
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
-            int index = this.table.SelectedIndex;
+            int index = this.MedicamentDataGrid.SelectedIndex;
             if (index == -1)
             {
                 MessageBox.Show("You need to select item from the table");

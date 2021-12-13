@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pharmacy_IS.Model.Entities
 {
-    class Medicament
+    public class Medicament
     {
 
         public string MedName { get; set; }

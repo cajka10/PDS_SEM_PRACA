@@ -63,6 +63,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\Entities\EnumStates.cs" />
+    <Compile Include="Model\Entities\Medicament.cs" />
     <Compile Include="Model\Entities\UserRole.cs" />
     <Compile Include="Model\Exceptions\NoSuchUserException.cs" />
     <Compile Include="ViewModel\Service\LoginService.cs" />
