@@ -62,6 +62,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Entities\EnumStates.cs" />
     <Compile Include="Model\Entities\UserRole.cs" />
     <Compile Include="Model\Exceptions\NoSuchUserException.cs" />
     <Compile Include="ViewModel\Service\LoginService.cs" />
@@ -70,10 +71,27 @@
     <Compile Include="View\Controls\MedicamentsUC.xaml.cs">
       <DependentUpon>MedicamentsUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Controls\StorageUC.xaml.cs">
+      <DependentUpon>StorageUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\InsertMedWindow.xaml.cs">
+      <DependentUpon>InsertMedWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\StorageDepositWindow.xaml.cs">
+      <DependentUpon>StorageDepositWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\Controls\MedicamentsUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\StorageUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\InsertMedWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -90,6 +108,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StorageDepositWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
