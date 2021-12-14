@@ -104,17 +104,23 @@ namespace Pharmacy_IS
         {
             this.MedicamentsUC.Visibility = Visibility.Visible;
             this.StorageUC.Visibility = Visibility.Hidden;
+            this.BestsellersUC.Visibility = Visibility.Hidden;
+
         }
 
         private void showStorage(object sender, MouseButtonEventArgs e)
         {
             this.MedicamentsUC.Visibility = Visibility.Hidden;
             this.StorageUC.Visibility = Visibility.Visible;
+            this.BestsellersUC.Visibility = Visibility.Hidden;
+
         }
 
         private void showBestsellers(object sender, MouseButtonEventArgs e)
         {
-
+            this.MedicamentsUC.Visibility = Visibility.Hidden;
+            this.StorageUC.Visibility = Visibility.Hidden;
+            this.BestsellersUC.Visibility = Visibility.Visible;
         }
 
         private void receiptsBarHeightChange(object sender, MouseButtonEventArgs e)

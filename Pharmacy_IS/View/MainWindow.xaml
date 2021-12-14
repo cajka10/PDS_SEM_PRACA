@@ -38,6 +38,12 @@
                          Visibility="Hidden" 
                          RenderTransformOrigin="0.595,0.425">
             </view:StorageUC>
+            <view:BestsellersUC 
+                         x:Name="BestsellersUC" 
+                         Margin="0, 0, 0, 0" 
+                         Visibility="Hidden" 
+                         RenderTransformOrigin="0.595,0.425">
+            </view:BestsellersUC>
         </Grid>
 
         <Grid HorizontalAlignment="Left" Height="50" Margin="0" VerticalAlignment="Top" Width="1200" RenderTransformOrigin="0.495,2.823" MouseDown="Grid_MouseDown" Background="#FF02369C" Grid.ColumnSpan="2">
