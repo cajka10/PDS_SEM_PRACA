@@ -73,5 +73,10 @@ namespace Pharmacy_IS.View
 
             }
         }
+
+        private void UserNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -1,0 +1,29 @@
+﻿<Window x:Class="Pharmacy_IS.View.InsertStorageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pharmacy_IS.View"
+        mc:Ignorable="d"
+        Title="Insert  Into Storage" Height="180" Width="450" WindowStyle="None" ResizeMode="NoResize" >
+    <Grid>
+        <Grid HorizontalAlignment="Left" Height="25" Margin="0,0,0,0" VerticalAlignment="Top" Width="450"  MouseDown="Grid_MouseDown" Background="#FF02369C">
+            <Label x:Name="heading" Content="Insert  Into Storage" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,00,0" FontFamily="Arial" Foreground="White" FontWeight="Bold"/>
+            <Image x:Name="buttonExit" Width="15" HorizontalAlignment="Left" Margin="425,0,10,0" Source="endicon.png" MouseDown="ButtonClose_Clicked" Height="15" />
+            <Image x:Name="buttonMin" Width="15" HorizontalAlignment="Left" Margin="405,0,10,0" Source="minimize.png"  MouseDown="ButtonMin_Clicked" Height="15" />
+        </Grid>
+        <Grid>
+            <Label Content="Name:" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,35,330,0" FontFamily="Arial"/>
+            <Label Content="Quantity:" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,65,330,0" FontFamily="Arial"/>
+            <Label Content="Expiration date:" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,95,330,0" FontFamily="Arial"/>
+
+
+            <ComboBox x:Name="manufacturer" HorizontalAlignment="Left" Height="20" Margin="120,35,0,0"  VerticalAlignment="Top" Width="250" FontFamily="Arial"/>
+            <TextBox x:Name="quantity" HorizontalAlignment="Left" Height="20" Margin="120,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="250" FontFamily="Arial" />
+            <DatePicker HorizontalAlignment="Left" Margin="120,95,0,0" VerticalAlignment="Top"/>
+
+            <Button x:Name="confirmButton" Content="Insert" HorizontalAlignment="Left" Margin="250,130,0,0" VerticalAlignment="Top" Width="120" FontFamily="Arial" FontWeight="Bold" FontSize="14" Click="Button_Click"/>
+
+        </Grid>
+    </Grid>
+</Window>

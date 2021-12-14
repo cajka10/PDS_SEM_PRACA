@@ -70,6 +70,9 @@
     <Compile Include="Model\Entities\User.cs" />
     <Compile Include="ViewModel\Service\MedicamentService.cs" />
     <Compile Include="ViewModel\Utils\PasswordUtils.cs" />
+    <Compile Include="View\Controls\BestsellersUC.xaml.cs">
+      <DependentUpon>BestsellersUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\MedicamentsUC.xaml.cs">
       <DependentUpon>MedicamentsUC.xaml</DependentUpon>
     </Compile>
@@ -79,12 +82,19 @@
     <Compile Include="View\InsertMedWindow.xaml.cs">
       <DependentUpon>InsertMedWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\InsertStorageWindow.xaml.cs">
+      <DependentUpon>InsertStorageWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\StorageDepositWindow.xaml.cs">
       <DependentUpon>StorageDepositWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\Controls\BestsellersUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Controls\MedicamentsUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -94,6 +104,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\InsertMedWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\InsertStorageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

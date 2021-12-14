@@ -60,10 +60,10 @@
                         <Label x:Name="label_allMeds" Content="All Medicaments" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" FontSize="20" FontWeight="Bold" Background="Transparent" Margin="0,0,10,0" MouseDown="showAllMeds" />
                     </Grid>
                     <Grid x:Name="storage" HorizontalAlignment="Right" VerticalAlignment="Top" Height="35" Width="170" Margin="0,90,0,0" Background="#FF02369C" MouseDown="showStorage">
-                        <Label x:Name="label_storage" Content="Storage" Foreground="White" FontFamily="Arial" FontSize="20" FontWeight="Bold" Background="Transparent" Margin="75,0,10,0" />
+                        <Label x:Name="label_storage" Content="Storage" Foreground="White" FontFamily="Arial" FontSize="20" FontWeight="Bold" Background="Transparent" Margin="75,0,10,0" MouseDown="showBestsellers" />
                     </Grid>
                     <Grid x:Name="bestsellers" HorizontalAlignment="Right" VerticalAlignment="Top" Height="35" Width="200" Margin="0,130,0,0" Background="#FF02369C">
-                        <Label x:Name="label_bestsellers" Content="Bestsellers" Foreground="White" FontFamily="Arial" FontSize="20" FontWeight="Bold" Background="Transparent" Margin="75,0,10,0" />
+                        <Label x:Name="label_bestsellers" Content="Bestsellers" Foreground="White" FontFamily="Arial" FontSize="20" FontWeight="Bold" Background="Transparent" Margin="75,0,10,0" MouseDown="showBestSellers"/>
                     </Grid>
                     <Grid x:Name="stats" HorizontalAlignment="Right" VerticalAlignment="Top" Height="35" Width="183" Margin="0,170,0,0" Background="#FF02369C">
                         <Label x:Name="label_stats" Content="Statistics" Foreground="White" FontFamily="Arial" FontSize="20" FontWeight="Bold" Background="Transparent" Margin="75,0,10,0" />

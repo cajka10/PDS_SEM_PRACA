@@ -112,6 +112,11 @@ namespace Pharmacy_IS
             this.StorageUC.Visibility = Visibility.Visible;
         }
 
+        private void showBestsellers(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
         private void receiptsBarHeightChange(object sender, MouseButtonEventArgs e)
         {
             BitmapImage bi = new BitmapImage();
