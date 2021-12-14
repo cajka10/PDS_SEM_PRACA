@@ -18,7 +18,7 @@
 
         <DatePicker x:Name="datepickerFrom" HorizontalAlignment="Left" Margin="120,110,0,0" VerticalAlignment="Top"/>
         <DatePicker x:Name="datepickeTo" HorizontalAlignment="Left" Margin="120,160,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="confirmButton" Content="Confirm" HorizontalAlignment="Left" Margin="120,200,0,0" VerticalAlignment="Top" Width="100" FontFamily="Arial" FontWeight="Bold" FontSize="14" Click="confirmButton_Click"/>
+        <Button x:Name="confirmButton" Content="Filter" HorizontalAlignment="Left" Margin="120,200,0,0" VerticalAlignment="Top" Width="100" FontFamily="Arial" FontWeight="Bold" FontSize="14" Click="confirmButton_Click"/>
 
     </Grid>
 </UserControl>

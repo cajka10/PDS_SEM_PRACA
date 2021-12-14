@@ -44,6 +44,12 @@
                          Visibility="Hidden" 
                          RenderTransformOrigin="0.595,0.425">
             </view:BestsellersUC>
+            <view:StatisticsUC 
+                         x:Name="StatisticsUC" 
+                         Margin="0, 0, 0, 0" 
+                         Visibility="Hidden" 
+                         RenderTransformOrigin="0.595,0.425">
+            </view:StatisticsUC>
         </Grid>
 
         <Grid HorizontalAlignment="Left" Height="50" Margin="0" VerticalAlignment="Top" Width="1200" RenderTransformOrigin="0.495,2.823" MouseDown="Grid_MouseDown" Background="#FF02369C" Grid.ColumnSpan="2">
@@ -72,7 +78,7 @@
                         <Label x:Name="label_bestsellers" Content="Bestsellers" Foreground="White" FontFamily="Arial" FontSize="20" FontWeight="Bold" Background="Transparent" Margin="75,0,10,0" MouseDown="showBestsellers"/>
                     </Grid>
                     <Grid x:Name="stats" HorizontalAlignment="Right" VerticalAlignment="Top" Height="35" Width="183" Margin="0,170,0,0" Background="#FF02369C">
-                        <Label x:Name="label_stats" Content="Statistics" Foreground="White" FontFamily="Arial" FontSize="20" FontWeight="Bold" Background="Transparent" Margin="75,0,10,0" />
+                        <Label x:Name="label_stats" Content="Statistics" Foreground="White" FontFamily="Arial" FontSize="20" FontWeight="Bold" Background="Transparent" Margin="75,0,10,0" MouseDown="showStatistics" />
                     </Grid>
                 </Grid>
                 <Grid x:Name="receiptsGrid" HorizontalAlignment="Left" Height="250" Margin="0,250,0,0" VerticalAlignment="Top" Width="250" Background="#FF02369C">

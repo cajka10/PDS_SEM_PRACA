@@ -105,6 +105,8 @@ namespace Pharmacy_IS
             this.MedicamentsUC.Visibility = Visibility.Visible;
             this.StorageUC.Visibility = Visibility.Hidden;
             this.BestsellersUC.Visibility = Visibility.Hidden;
+            this.StatisticsUC.Visibility = Visibility.Hidden;
+
 
         }
 
@@ -113,6 +115,8 @@ namespace Pharmacy_IS
             this.MedicamentsUC.Visibility = Visibility.Hidden;
             this.StorageUC.Visibility = Visibility.Visible;
             this.BestsellersUC.Visibility = Visibility.Hidden;
+            this.StatisticsUC.Visibility = Visibility.Hidden;
+
 
         }
 
@@ -121,6 +125,16 @@ namespace Pharmacy_IS
             this.MedicamentsUC.Visibility = Visibility.Hidden;
             this.StorageUC.Visibility = Visibility.Hidden;
             this.BestsellersUC.Visibility = Visibility.Visible;
+            this.StatisticsUC.Visibility = Visibility.Hidden;
+
+        }
+
+        private void showStatistics(object sender, MouseButtonEventArgs e)
+        {
+            this.MedicamentsUC.Visibility = Visibility.Hidden;
+            this.StorageUC.Visibility = Visibility.Hidden;
+            this.BestsellersUC.Visibility = Visibility.Hidden;
+            this.StatisticsUC.Visibility = Visibility.Visible;
         }
 
         private void receiptsBarHeightChange(object sender, MouseButtonEventArgs e)

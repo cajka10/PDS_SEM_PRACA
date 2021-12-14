@@ -77,6 +77,9 @@
     <Compile Include="View\Controls\MedicamentsUC.xaml.cs">
       <DependentUpon>MedicamentsUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Controls\StatisticsUC.xaml.cs">
+      <DependentUpon>StatisticsUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\StorageUC.xaml.cs">
       <DependentUpon>StorageUC.xaml</DependentUpon>
     </Compile>
@@ -97,6 +100,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Controls\MedicamentsUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\StatisticsUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
