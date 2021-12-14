@@ -51,7 +51,7 @@ namespace Pharmacy_IS.ViewModel.Service
             try
             {
                 _conn.Open();
-                string sql = @"select  med.NAME, med.TYPE.type , med.DESCRIPTION, man.name
+                string sql = @"select id_med as ID,  med.NAME as Nazov, med.TYPE.type as Typ, med.DESCRIPTION as Popis, man.name as Vyrobca
                             from NOVAKOVA25.MEDICAMENT med join NOVAKOVA25.MANUFACTURER man using (id_man)";
                 using (OracleCommand command = new OracleCommand(sql, _conn))
                 {

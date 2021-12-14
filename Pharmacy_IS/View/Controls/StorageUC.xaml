@@ -7,7 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="690" d:DesignWidth="950">
     <Grid>
-        <DataGrid x:Name="storageDataGrid" HorizontalAlignment="Left" Height="629" Margin="228,30,0,0" VerticalAlignment="Top" Width="694" FontFamily="Arial"/>
+        <DataGrid x:Name="storageDataGrid" HorizontalAlignment="Left" Height="629" Margin="228,30,0,0" VerticalAlignment="Top" Width="694"
+                  AlternatingRowBackground="#71B0EF" FontFamily="Segoe UI SemiBold" ColumnWidth="*"/>
         <Button x:Name="insertButton" Content="New Sortiment" HorizontalAlignment="Left" Margin="75,80,0,0" VerticalAlignment="Top" Width="118" Height="30" FontFamily="Arial" FontWeight="Bold" Click="insertButton_Click" />
         <Button x:Name="updateButton" Content="Update Quantity" HorizontalAlignment="Left" Margin="75,120,0,0" VerticalAlignment="Top" Width="118" Height="31" FontFamily="Arial" FontWeight="Bold" Click="updateButton_Click" />
         <Button x:Name="deleteButton" Content="Remove Item" HorizontalAlignment="Left" Margin="75,160,0,0" VerticalAlignment="Top" Width="118" Height="31" FontFamily="Arial" FontWeight="Bold" Click="deleteButton_Click" />
