@@ -73,7 +73,7 @@ namespace Pharmacy_IS
         {
             BitmapImage bi = new BitmapImage();
             bi.BeginInit();
-            bi.UriSource = new Uri(@"pack://application:,,/View/arrowicon.png");
+            bi.UriSource = new Uri(@"pack://application:,,/Pharmacy_IS;component/Resources/arrowicon.png");
             if (medsBarColapsed)
             {
                 medsBarColapsed = false;
@@ -142,7 +142,7 @@ namespace Pharmacy_IS
         {
             BitmapImage bi = new BitmapImage();
             bi.BeginInit();
-            bi.UriSource = new Uri(@"pack://application:,,/View/arrowicon.png");
+            bi.UriSource = new Uri(@"pack://application:,,/Pharmacy_IS;component/Resources/arrowicon.png");
             if (receiptsBarColapsed)
             {
                 receiptsBarColapsed = false;

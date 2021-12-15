@@ -87,8 +87,8 @@
                 </Grid>
                 <Grid x:Name="receiptsGrid" HorizontalAlignment="Left" Height="250" Margin="0,250,0,0" VerticalAlignment="Top" Width="250" Background="#FF02369C">
                     <Grid x:Name="receiptsGridHeader" HorizontalAlignment="Left" Height="40" Margin="0" VerticalAlignment="Top" Width="250" MouseDown="receiptsBarHeightChange">
-                        <Image x:Name="receiptIcon" HorizontalAlignment="Left" Height="35" Margin="10,5,5,0" VerticalAlignment="Top" Width="40" Source="receipticon.png" StretchDirection="DownOnly"/>
-                        <Image x:Name="arrowIconReceipt" Height="30" Margin="0,5,5,0" VerticalAlignment="Top" Width="30" Source="arrowicon.png" RenderTransformOrigin="-0.83,2.07" HorizontalAlignment="Right"/>
+                        <Image x:Name="receiptIcon" HorizontalAlignment="Left" Height="35" Margin="10,5,5,0" VerticalAlignment="Top" Width="40" Source="/Pharmacy_IS;component/Resources/receipticon.png" StretchDirection="DownOnly"/>
+                        <Image x:Name="arrowIconReceipt" Height="30" Margin="0,5,5,0" VerticalAlignment="Top" Width="30" Source="/Pharmacy_IS;component/Resources/arrowicon.png" RenderTransformOrigin="-0.83,2.07" HorizontalAlignment="Right"/>
                         <Label x:Name="receiptHeader" Content="Receipts" HorizontalAlignment="Right" Margin="0,0,85,0" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" FontSize="24" FontWeight="Bold"/>
                     </Grid>
                     <Grid x:Name="allReceipts" HorizontalAlignment="Right" VerticalAlignment="Top" Height="35" Width="178" Margin="0,50,0,0" Background="#FF02369C">
