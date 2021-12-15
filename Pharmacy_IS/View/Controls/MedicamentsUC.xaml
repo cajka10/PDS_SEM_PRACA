@@ -8,7 +8,7 @@
              d:DesignHeight="690" d:DesignWidth="950">
     <Grid>
         <DataGrid x:Name="MedicamentDataGrid" HorizontalAlignment="Left" Height="629" Margin="228,30,0,0" VerticalAlignment="Top" Width="694"
-                  AlternatingRowBackground="#71B0EF" FontFamily="Segoe UI SemiBold" ColumnWidth="*">
+                  AlternatingRowBackground="#71B0EF" FontFamily="Segoe UI SemiBold" ColumnWidth="*" MouseDoubleClick="MedicamentDataGrid_MouseDoubleClick" IsReadOnly="True" >
             <DataGrid.Effect>
                 <DropShadowEffect/>
             </DataGrid.Effect>

@@ -74,7 +74,16 @@ namespace Pharmacy_IS.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Dictionary<int, int> order= new Dictionary<int, int>();
+            foreach(MyItem item in orderListView.Items){
+                if(order.ContainsKey(item.Id)){
+                    order[item.Id]++;
+                }
+                else
+                {
+                    order.Add(item.Id, 1);
+                }
+            }
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)

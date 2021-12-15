@@ -74,5 +74,13 @@ namespace Pharmacy_IS.View.Controls
             }
             //TODO vykonat vymazanie refreshnut tabulku
         }
+
+        private void MedicamentDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var index = (DataRowView)this.MedicamentDataGrid.SelectedItem;
+            int id = Convert.ToInt32(index["ID"]);
+            InsertMedWindow insertWindow = new InsertMedWindow(State.View, _medicamentService.GetMedicament(id));
+            insertWindow.ShowDialog();
+        }
     }
 }

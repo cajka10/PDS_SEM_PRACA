@@ -29,6 +29,22 @@ namespace Pharmacy_IS.View
                 this.heading.Content = "Editing Medicament";
                 this.confirmButton.Content = "Confirm";
             }
+            if(state == State.View)
+            {
+                this.heading.Content = "Medicament Detail";
+                this.confirmButton.Content = "Close";
+                this.nameText.IsEnabled = false;
+                this.manufacturer.IsEnabled = false;
+                this.amount.IsEnabled = false;
+                this.medType.IsEnabled = false;
+                this.medImage.IsEnabled = false;
+                this.ingredients.IsEnabled = false;
+                this.medPrescribed.IsEnabled = false;
+                this.DesctiptionTextBox.IsEnabled = false;
+                this.chooseButton.IsEnabled = false;
+
+
+            }
             SetManufacturers();
         }
 
@@ -43,6 +59,22 @@ namespace Pharmacy_IS.View
             {
                 this.heading.Content = "Editing Medicament";
                 this.confirmButton.Content = "Confirm";
+            }
+            if (state == State.View)
+            {
+                this.heading.Content = "Medicament Detail";
+                this.confirmButton.Content = "Close";
+                this.nameText.IsEnabled = false;
+                this.manufacturer.IsEnabled = false;
+                this.amount.IsEnabled = false;
+                this.medType.IsEnabled = false;
+                this.medImage.IsEnabled = false;
+                this.ingredients.IsEnabled = false;
+                this.medPrescribed.IsEnabled = false;
+                this.DesctiptionTextBox.IsEnabled = false;
+                this.chooseButton.IsEnabled = false;
+                return;
+
             }
             SetManufacturers();
         }
@@ -123,6 +155,12 @@ namespace Pharmacy_IS.View
             //this.Medicament.ActiveIngredients = this.ingredients.Text;
             //this.Medicament.Description = this.DesctiptionTextBox.Text;
             //this.Medicament.IsPrescribed = (bool)this.medPrescribed.IsChecked;
+
+            if(state == State.View)
+            {
+                this.Close();
+                return;
+            }
 
             this.Medicament.MedName = "UPDATE -test liek";
             this.Medicament.ManufacturerId = "111222";
