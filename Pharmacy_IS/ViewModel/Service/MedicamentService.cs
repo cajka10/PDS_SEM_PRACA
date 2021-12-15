@@ -109,6 +109,38 @@ namespace Pharmacy_IS.ViewModel.Service
             }
         }
 
+        internal Dictionary<int, string> getMedicamentsNames()
+        {
+            Dictionary<int, string> output = new Dictionary<int, string>();
+            try
+            {
+                _conn.Open();
+                string sql = @"select id_med as ID, NAME as Nazov
+                            from NOVAKOVA25.MEDICAMENT";
+                using (OracleCommand command = new OracleCommand(sql, _conn))
+                {
+                    List<string> temp = new List<string>();
+                    OracleDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        output.Add(Convert.ToInt32(reader[0]), Convert.ToString(reader[1]));
+                    }
+
+                    return output;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        }
+
         internal Medicament GetMedicament(int id)
         {          
             try

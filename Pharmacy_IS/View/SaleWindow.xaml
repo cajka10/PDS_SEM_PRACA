@@ -14,12 +14,21 @@
         </Grid>
 
         <Label Content="Sortiment" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,35,00,0" FontFamily="Arial"  FontWeight="Bold"/>
-        <ListBox x:Name="sortimentTable" Height="300" Margin="15,55,280,45" BorderBrush="Black" MouseDoubleClick="sortimentTable_MouseDoubleClick"/>
-        <Label Content="Order" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,35,00,0" FontFamily="Arial"  FontWeight="Bold"/>
-        <ListBox Height="300" Margin="200,55,30,45" BorderBrush="Black"/>
-        <Button x:Name="increaseButton" Content="+" Margin="425,60,4.6,0" VerticalAlignment="Top" Click="increaseButton_Click" />
-        <Button x:Name="decreaseButton" Content="-" Margin="425,90,4.6,0" VerticalAlignment="Top" Click="decreaseButton_Click"/>
-        <Button Content="Confirm" HorizontalAlignment="Left" Margin="320,370,0,0" VerticalAlignment="Top" Width="100" FontSize="14" FontWeight="Bold" Click="Button_Click"/>
+        <ListBox x:Name="sortimentListBox" Height="300" Margin="15,55,280,45" BorderBrush="Black" MouseDoubleClick="sortimentTable_MouseDoubleClick"/>
+        <Label Content="Order" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="190,35,00,0" FontFamily="Arial"  FontWeight="Bold"/>
+        <ListView x:Name="orderListView" ItemsSource="{Binding MyItem}" Height="300" Margin="190,55,15,45" BorderBrush="Black" Width="250">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id" Width="30"></GridViewColumn>
+
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" Width="160"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Quantity}" Header="Quantity" Width="60"></GridViewColumn>
+
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+       <Button Content="Confirm" HorizontalAlignment="Left" Margin="320,370,0,0" VerticalAlignment="Top" Width="100" FontSize="14" FontWeight="Bold" Click="Button_Click"/>
 
     </Grid>
 </Window>
