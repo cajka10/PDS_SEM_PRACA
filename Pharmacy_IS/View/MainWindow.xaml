@@ -26,6 +26,10 @@
             Width="950"
             Grid.Column="2"
             Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="454*"/>
+                <ColumnDefinition Width="21*"/>
+            </Grid.ColumnDefinitions>
             <view:MedicamentsUC 
                          x:Name="MedicamentsUC" 
                          Margin="0, 0, 0, 0" 
@@ -54,18 +58,18 @@
 
         <Grid HorizontalAlignment="Left" Height="50" Margin="0" VerticalAlignment="Top" Width="1200" RenderTransformOrigin="0.495,2.823" MouseDown="Grid_MouseDown" Background="#FF02369C" Grid.ColumnSpan="2">
 
-            <Image Height="30" VerticalAlignment="Bottom" Width="30" HorizontalAlignment="Left" Margin="10,10,0,10" Source="farmacyicon.png" OpacityMask="#FF02369C"/>
+            <Image Height="30" VerticalAlignment="Bottom" Width="30" HorizontalAlignment="Left" Margin="10,10,0,10" Source="/Pharmacy_IS;component/Resources/farmacyicon.png" OpacityMask="#FF02369C"/>
             <Label Content="Le Lekáreň" Height="35" VerticalAlignment="Top" FontFamily="Arial" FontWeight="Bold" FontSize="24" Width="140" Margin="45,10,0,10" HorizontalAlignment="Left" Foreground="White"/>
-            <Image x:Name="buttonExit" Width="30" HorizontalAlignment="Left" Margin="1155,10,0,10" Source="endicon.png" RenderTransformOrigin="32.571,0.149" MouseDown="ButtonClose_Clicked" Height="30" />
-            <Image x:Name="buttonMin" Margin="1110,10,55,10" Source="minimize.png" RenderTransformOrigin="32.571,0.149" MouseDown="ButtonMin_Clicked" Height="30" Width="30" />
+            <Image x:Name="buttonExit" Width="30" HorizontalAlignment="Left" Margin="1155,10,0,10" Source="/Pharmacy_IS;component/Resources/endicon.png" RenderTransformOrigin="32.571,0.149" MouseDown="ButtonClose_Clicked" Height="30" />
+            <Image x:Name="buttonMin" Margin="1110,10,55,10" Source="/Pharmacy_IS;component/Resources/minimize.png" RenderTransformOrigin="32.571,0.149" MouseDown="ButtonMin_Clicked" Height="30" Width="30" />
         </Grid>
         <Grid x:Name="leftPanel" HorizontalAlignment="Left" Height="690" Margin="0,50,0,0" VerticalAlignment="Top" Width="250" Background="#FF02369C" Grid.RowSpan="2">
-            <Image x:Name="buttonMenu" HorizontalAlignment="Right" Height="40" Margin="5,10,5,0" VerticalAlignment="Top" Width="40" Source="menuicon.png" MouseDown="Image_MouseDown"/>
+            <Image x:Name="buttonMenu" HorizontalAlignment="Right" Height="40" Margin="5,10,5,0" VerticalAlignment="Top" Width="40" Source="/Pharmacy_IS;component/Resources/menuicon.png" MouseDown="Image_MouseDown"/>
             <Grid HorizontalAlignment="Left" Height="600" Margin="0,55,0,0" VerticalAlignment="Top" Width="250">
                 <Grid x:Name="medsGrid" HorizontalAlignment="Left" Height="250" Margin="0,5,0,0" VerticalAlignment="Top" Width="250" Background="#FF02369C">
                     <Grid x:Name="medsGridHeader" HorizontalAlignment="Right" Height="40" Margin="0,0,0,0" VerticalAlignment="Top" Width="250" MouseDown="medsBarHeightChange">
-                        <Image x:Name="medIcon" HorizontalAlignment="Left" Height="40" Margin="5,5,5,0" VerticalAlignment="Top" Width="40" Source="pillicon.png"/>
-                        <Image x:Name="arrowIconMeds" Height="30" Margin="0,5,5,0" VerticalAlignment="Top" Width="30" Source="arrowicon.png" RenderTransformOrigin="-0.83,2.07" HorizontalAlignment="Right"/>
+                        <Image x:Name="medIcon" HorizontalAlignment="Left" Height="40" Margin="5,5,5,0" VerticalAlignment="Top" Width="40" Source="/Pharmacy_IS;component/Resources/pillicon.png"/>
+                        <Image x:Name="arrowIconMeds" Height="30" Margin="0,5,5,0" VerticalAlignment="Top" Width="30" Source="/Pharmacy_IS;component/Resources/arrowicon.png" RenderTransformOrigin="-0.83,2.07" HorizontalAlignment="Right"/>
                         <Label x:Name="medHeader" Content="Medicaments" HorizontalAlignment="Left" Margin="55,0,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" FontSize="24" FontWeight="Bold"/>
                     </Grid>
                     <Grid x:Name="allMeds" HorizontalAlignment="Right" VerticalAlignment="Top" Height="35" Width="178" Margin="0,50,0,0" Background="#FF02369C">
@@ -86,6 +90,12 @@
                         <Image x:Name="receiptIcon" HorizontalAlignment="Left" Height="35" Margin="10,5,5,0" VerticalAlignment="Top" Width="40" Source="receipticon.png" StretchDirection="DownOnly"/>
                         <Image x:Name="arrowIconReceipt" Height="30" Margin="0,5,5,0" VerticalAlignment="Top" Width="30" Source="arrowicon.png" RenderTransformOrigin="-0.83,2.07" HorizontalAlignment="Right"/>
                         <Label x:Name="receiptHeader" Content="Receipts" HorizontalAlignment="Right" Margin="0,0,85,0" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" FontSize="24" FontWeight="Bold"/>
+                    </Grid>
+                    <Grid x:Name="allReceipts" HorizontalAlignment="Right" VerticalAlignment="Top" Height="35" Width="178" Margin="0,50,0,0" Background="#FF02369C">
+                        <Label x:Name="label_allReceipts" Content="All Medicaments" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" FontSize="20" FontWeight="Bold" Background="Transparent" Margin="0,0,10,0" MouseDown="showAllMeds" />
+                    </Grid>
+                    <Grid x:Name="statsReceipts" HorizontalAlignment="Right" VerticalAlignment="Top" Height="35" Width="178" Margin="0,90,0,0" Background="#FF02369C">
+                        <Label x:Name="label_statsReceipts" Content="Statistics" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" FontSize="20" FontWeight="Bold" Background="Transparent" Margin="0,0,10,0" MouseDown="showAllMeds" />
                     </Grid>
                 </Grid>
             </Grid>

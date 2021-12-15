@@ -170,45 +170,31 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="View\farmacyicon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\endicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\farmacyicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\menuicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\arrowicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pillicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\receipticon.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="View\endicon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="View\minimize.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="View\menuicon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="View\arrowicon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="minimize.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="endicon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="farmacyicon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="menuicon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="arrowicon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="View\pillicon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="View\receipticon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
