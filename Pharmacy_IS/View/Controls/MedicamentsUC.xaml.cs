@@ -2,6 +2,7 @@
 using Pharmacy_IS.ViewModel.Service;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,19 +49,20 @@ namespace Pharmacy_IS.View.Controls
             insertWindow.Show();
         }
 
-        private void updateButton_Click(object sender, RoutedEventArgs e)
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            int index = this.MedicamentDataGrid.SelectedIndex;
-            if(index == -1)
+            var index = (DataRowView)this.MedicamentDataGrid.SelectedItem;
+            if (index == null)
             {
                 MessageBox.Show("You need to select item from the table");
                 return;
             }
-            InsertMedWindow insertWindow = new InsertMedWindow(State.Editing);
+            int id = Convert.ToInt32(index["ID"]);
+            InsertMedWindow insertWindow = new InsertMedWindow(State.Editing, _medicamentService.GetMedicament(id));
             insertWindow.Show();
         }
 
-        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             int index = this.MedicamentDataGrid.SelectedIndex;
             if (index == -1)

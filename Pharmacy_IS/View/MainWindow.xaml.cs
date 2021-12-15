@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pharmacy_IS.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,7 +34,7 @@ namespace Pharmacy_IS
             receiptsBarColapsed = true;
             receiptsGrid.Height = medsGridHeader.Height;
             receiptsGrid.Margin = new Thickness(0, 45, 0, 0);
- 
+
 
         }
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)

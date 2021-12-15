@@ -24,6 +24,37 @@ namespace Pharmacy_IS.View
             }
         }
 
+        public InsertMedWindow(State p_state, Medicament medicament)
+        {
+            state = p_state;
+            InitializeComponent();
+            this.Medicament = medicament;
+            this.Reload();
+            if (state == State.Editing)
+            {
+                this.heading.Content = "Editing Medicament";
+                this.confirmButton.Content = "Confirm";
+            }
+        }
+
+        private void Reload()
+        {
+            if (Medicament != null)
+            {
+                this.nameText.Text = this.Medicament.MedName;
+                this.manufacturer.SelectedValue = this.Medicament.ManufacturerId;
+                this.amount.Text = this.Medicament.Amount.ToString();
+                this.medType.Text = this.Medicament.MedType;
+                this.ingredients.Text = this.Medicament.ActiveIngredients;
+                this.DesctiptionTextBox.Text = this.Medicament.Description;
+                
+            }
+            else
+            {
+                MessageBoxResult res = MessageBox.Show("Nepdoarilo sa nacitat data.");
+            }                             
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if(this.nameText.Text.Length == 0)
@@ -75,6 +106,7 @@ namespace Pharmacy_IS.View
             this.Medicament.MedType = this.medType.Text;
             this.Medicament.ActiveIngredients = this.ingredients.Text;
             this.Medicament.Description = this.DesctiptionTextBox.Text;
+            this.Medicament.IsPrescribed = (bool)this.medPrescribed.IsChecked;
 
             //TODO spracovanie do objektu/vloženie
             //cez query + spracovanie obsahu pola ingredients do nejakeho listu
