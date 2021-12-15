@@ -11,13 +11,15 @@ namespace Pharmacy_IS.View
     public partial class InsertMedWindow : Window
     {
         private State state;
-
         public Medicament Medicament { get; set; }
+   
         private MedicamentService _service;
         public InsertMedWindow(State p_state)
         {
             _service = new MedicamentService();
+            this.Medicament = new Medicament();
             state = p_state;
+
             InitializeComponent();
             if (state == State.Editing)
             {
@@ -25,12 +27,11 @@ namespace Pharmacy_IS.View
                 this.confirmButton.Content = "Confirm";
             }
             SetManufacturers();
-
-
         }
 
         public InsertMedWindow(State p_state, Medicament medicament)
         {
+            _service = new MedicamentService();
             state = p_state;
             InitializeComponent();
             this.Medicament = medicament;
@@ -40,6 +41,7 @@ namespace Pharmacy_IS.View
                 this.heading.Content = "Editing Medicament";
                 this.confirmButton.Content = "Confirm";
             }
+            SetManufacturers();
         }
 
         private void SetManufacturers()
@@ -47,7 +49,6 @@ namespace Pharmacy_IS.View
 
             var dict = _service.GetManufacturers();
             manufacturer.ItemsSource = dict;
-
         }
 
         private void Reload()
@@ -56,11 +57,10 @@ namespace Pharmacy_IS.View
             {
                 this.nameText.Text = this.Medicament.MedName;
                 this.manufacturer.SelectedValue = this.Medicament.ManufacturerId;
-                this.amount.Text = this.Medicament.Amount.ToString();
+                this.amount.Text = "10ml";
                 this.medType.Text = this.Medicament.MedType;
                 this.ingredients.Text = this.Medicament.ActiveIngredients;
-                this.DesctiptionTextBox.Text = this.Medicament.Description;
-                
+                this.DesctiptionTextBox.Text = this.Medicament.Description;              
             }
             else
             {
@@ -70,59 +70,68 @@ namespace Pharmacy_IS.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(this.nameText.Text.Length == 0)
-            {
-                MessageBox.Show("You need to fill name field");
-                return;
-            }
-            if (this.manufacturer.Text.Length == 0)
-            {
-                MessageBox.Show("You need to fill manufacturer field");
-                return;
-            }
-            if (this.amount.Text.Length == 0)
-            {
-                MessageBox.Show("You need to fill amount field");
-                return;
-            }
-            int numAmount;
+            //if(this.nameText.Text.Length == 0)
+            //{
+            //    MessageBox.Show("You need to fill name field");
+            //    return;
+            //}
+            //if (this.manufacturer.Text.Length == 0)
+            //{
+            //    MessageBox.Show("You need to fill manufacturer field");
+            //    return;
+            //}
+            //if (this.amount.Text.Length == 0)
+            //{
+            //    MessageBox.Show("You need to fill amount field");
+            //    return;
+            //}
+            //int numAmount;
 
-            try
-            {
-                numAmount = Int32.Parse(this.amount.Text);
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Amount value must be number");
-                return;
-            }
+            //try
+            //{
+            //    numAmount = Int32.Parse(this.amount.Text);
+            //}
+            //catch (FormatException)
+            //{
+            //    MessageBox.Show("Amount value must be number");
+            //    return;
+            //}
 
-            if (this.medType.Text.Length == 0)
-            {
-                MessageBox.Show("You need to fill type field");
-                return;
-            }
-            if (this.medImage.Text.Length == 0)
-            {
-                MessageBox.Show("You need to fill image field");
-                return;
-            }
-            if (this.ingredients.Text.Length == 0)
-            {
-                MessageBox.Show("You need to fill image field");
-                return;
-            }
+            //if (this.medType.Text.Length == 0)
+            //{
+            //    MessageBox.Show("You need to fill type field");
+            //    return;
+            //}
+            //if (this.medImage.Text.Length == 0)
+            //{
+            //    MessageBox.Show("You need to fill image field");
+            //    return;
+            //}
+            //if (this.ingredients.Text.Length == 0)
+            //{
+            //    MessageBox.Show("You need to fill image field");
+            //    return;
+            //}
 
-            this.Medicament.MedName = this.nameText.Text;
-            this.Medicament.ManufacturerId = (int)this.manufacturer.SelectedValue;
-            this.Medicament.Amount = int.TryParse(this.amount.Text, out int temp) ? 0 : temp;
-            this.Medicament.MedType = this.medType.Text;
-            this.Medicament.ActiveIngredients = this.ingredients.Text;
-            this.Medicament.Description = this.DesctiptionTextBox.Text;
-            this.Medicament.IsPrescribed = (bool)this.medPrescribed.IsChecked;
+            //this.Medicament.MedName = this.nameText.Text;
+            //this.Medicament.ManufacturerId = "111222"; //TODO
+            //this.Medicament.Amount = this.amount.Text;
+            //this.Medicament.MedType = this.medType.Text;
+            //this.Medicament.ActiveIngredients = this.ingredients.Text;
+            //this.Medicament.Description = this.DesctiptionTextBox.Text;
+            //this.Medicament.IsPrescribed = (bool)this.medPrescribed.IsChecked;
+
+            this.Medicament.MedName = "UPDATE -test liek";
+            this.Medicament.ManufacturerId = "111222";
+            this.Medicament.Amount = " 10 ml";
+            this.Medicament.MedType = "tablety";
+            this.Medicament.ActiveIngredients = "sirup, test";
+            this.Medicament.Description = "UPDATE - test popis";
+            this.Medicament.IsPrescribed = true;
 
             //TODO spracovanie do objektu/vloženie
             //cez query + spracovanie obsahu pola ingredients do nejakeho listu
+            this.DialogResult = true;
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -134,12 +143,18 @@ namespace Pharmacy_IS.View
         private void ButtonMin_Clicked(object sender, MouseButtonEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
-
         }
 
         private void ButtonClose_Clicked(object sender, MouseButtonEventArgs e)
         {
             this.Close();
+        }
+
+        private void ShowButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShowImageWindow window = new ShowImageWindow(this.Medicament.Id);
+            window.ShowDialog();
+
         }
     }
 }

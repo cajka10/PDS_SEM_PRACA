@@ -98,6 +98,9 @@
     <Compile Include="View\SaleWindow.xaml.cs">
       <DependentUpon>SaleWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ShowImageWindow.xaml.cs">
+      <DependentUpon>ShowImageWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\StorageDepositWindow.xaml.cs">
       <DependentUpon>StorageDepositWindow.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SaleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ShowImageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

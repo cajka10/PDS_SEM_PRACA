@@ -42,11 +42,10 @@ namespace Pharmacy_IS.View.Controls
         private void InsertButton_Click(object sender, RoutedEventArgs e)
         {
             InsertMedWindow insertWindow = new InsertMedWindow(State.Adding);
-            if (insertWindow.DialogResult == true)
+            if (insertWindow.ShowDialog() == true)
             {
                 _medicamentService.InsertMedicament(insertWindow.Medicament);
             }
-            insertWindow.Show();
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
@@ -59,7 +58,10 @@ namespace Pharmacy_IS.View.Controls
             }
             int id = Convert.ToInt32(index["ID"]);
             InsertMedWindow insertWindow = new InsertMedWindow(State.Editing, _medicamentService.GetMedicament(id));
-            insertWindow.Show();
+            if (insertWindow.ShowDialog() == true)
+            {
+                _medicamentService.UpdateMedicament(insertWindow.Medicament);
+            }
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)

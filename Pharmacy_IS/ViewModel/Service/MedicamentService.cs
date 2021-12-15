@@ -26,15 +26,52 @@ namespace Pharmacy_IS.ViewModel.Service
         {
             try
             {
+                int temp = 0;
                 _conn.Open();
-                OracleCommand command = new OracleCommand("p_insert_medicament", _conn);
+                OracleCommand command = new OracleCommand("usp_insert_medicament", _conn);
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.Add("PARAM1", OracleDbType.Varchar2).Value = medicament.MedName;
-                command.Parameters.Add("PARAM2", OracleDbType.Varchar2).Value = medicament.MedType;
-                command.Parameters.Add("PARAM3", OracleDbType.Varchar2).Value = medicament.Description;
-                command.Parameters.Add("PARAM4", OracleDbType.Int32).Value = medicament.Amount;
-                command.Parameters.Add("PARAM5", OracleDbType.Varchar2).Value = medicament.ActiveIngredients;
+                command.Parameters.Add("PARAM1", OracleDbType.Varchar2).Value = medicament.ManufacturerId;
+                command.Parameters.Add("PARAM2", OracleDbType.Varchar2).Value = medicament.MedName;
+                command.Parameters.Add("PARAM3", OracleDbType.Char).Value = medicament.IsPrescribed ? '1' : '0';
+                command.Parameters.Add("PARAM4", OracleDbType.Varchar2).Value = medicament.MedType;
+                command.Parameters.Add("PARAM5", OracleDbType.Varchar2).Value = medicament.Amount;
+                command.Parameters.Add("PARAM6", OracleDbType.Varchar2).Value = medicament.Description;
+                command.Parameters.Add("PARAM7", OracleDbType.Varchar2).Value = medicament.ActiveIngredients;
+                command.Parameters.Add("PARAM8", OracleDbType.Blob).Value = null;
+                command.Parameters.Add("PARAM9", OracleDbType.Int16).Value = temp;
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        }
+
+        internal void UpdateMedicament(Medicament medicament)
+        {
+            try
+            {
+                int temp = 0;
+                _conn.Open();
+                OracleCommand command = new OracleCommand("usp_update_medicament", _conn);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.Add("PARAM1", OracleDbType.Int32).Value = medicament.Id;
+                command.Parameters.Add("PARAM2", OracleDbType.Varchar2).Value = medicament.ManufacturerId;
+                command.Parameters.Add("PARAM3", OracleDbType.Varchar2).Value = medicament.MedName;
+                command.Parameters.Add("PARAM4", OracleDbType.Char).Value = medicament.IsPrescribed ? '1' : '0';
+                command.Parameters.Add("PARAM5", OracleDbType.Varchar2).Value = medicament.MedType;
+                command.Parameters.Add("PARAM6", OracleDbType.Varchar2).Value = medicament.Amount;
+                command.Parameters.Add("PARAM7", OracleDbType.Varchar2).Value = medicament.Description;
+                command.Parameters.Add("PARAM8", OracleDbType.Varchar2).Value = medicament.ActiveIngredients;
+                command.Parameters.Add("PARAM9", OracleDbType.Int16).Value = temp;
 
                 command.ExecuteNonQuery();
             }
@@ -77,9 +114,9 @@ namespace Pharmacy_IS.ViewModel.Service
             }
         }
 
-        internal Dictionary<int, string> GetManufacturers()
+        internal Dictionary<string, string> GetManufacturers()
         {
-            Dictionary<int, string> output = new Dictionary<int, string>();
+            Dictionary<string, string> output = new Dictionary<string, string>();
             try
             {
                 _conn.Open();
@@ -91,7 +128,7 @@ namespace Pharmacy_IS.ViewModel.Service
                     OracleDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        output.Add(Convert.ToInt32(reader[0]), Convert.ToString(reader[1]));
+                        output.Add(Convert.ToString(reader[0]), Convert.ToString(reader[1]));
                     }
 
                     return output;
@@ -147,26 +184,33 @@ namespace Pharmacy_IS.ViewModel.Service
             {
                 Medicament outpuMedicament = new Medicament();
                 _conn.Open();
-                string sql = @"select med.NAME as Nazov, med.TYPE.type as Typ, med.DESCRIPTION as Popis, id_man, is_prescribed as ""Na predpis"",
-                            x.column_value as Ingrediencie
-                            from NOVAKOVA25.MEDICAMENT med, TABLE(select p.active_ingredients from medicament p
-                            where p.id_med = medicament.id_med ) x  where id_med = " + id;
+                //string sql = @"select med.NAME as Nazov, med.TYPE.type as Typ, med.DESCRIPTION as Popis, id_man, is_prescribed as ""Na predpis"",
+                //            x.column_value as Ingrediencie
+                //            from NOVAKOVA25.MEDICAMENT med, TABLE(select p.active_ingredients from medicament p
+                //            where p.id_med = medicament.id_med ) x  where id_med = " + id;
 
-                string sql1 = @" select med.NAME as Nazov, med.TYPE.type as Typ,
+                string sql = @" select med.NAME as Nazov, med.TYPE.type as Typ,
                                 med.DESCRIPTION as Popis, id_man, is_prescribed as ""Na predpis"", t.* 
                                 FROM novakova25.medicament med, 
-                                table(med.active_ingredients) t WHERE med.id_med = 45004 ";
+                                table(med.active_ingredients) t WHERE med.id_med = " + id;
+
+                string sql1 = @"select med.NAME as Nazov, med.TYPE.type as Typ,
+                            med.DESCRIPTION as Popis, med.id_man, is_prescribed as ""Na predpis"",
+                            usf_get_textingredients(med.active_ingredients)
+                            FROM medicament med
+                            WHERE med.id_med = " + id;
                 using (OracleCommand command = new OracleCommand(sql1, _conn))
                 {
                     List<string> temp = new List<string>();
                     OracleDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
+                        outpuMedicament.Id = id;
                         outpuMedicament.MedName = Convert.ToString(reader[0]);
                         outpuMedicament.MedType = Convert.ToString(reader[1]);
                         outpuMedicament.Description = Convert.ToString(reader[2]);
-                        outpuMedicament.ManufacturerId = Convert.ToInt32(reader[3]);
-                        outpuMedicament.IsPrescribed = Convert.ToBoolean(Convert.ToUInt32(reader[4]));
+                        outpuMedicament.ManufacturerId = Convert.ToString(reader[3]);
+                        outpuMedicament.IsPrescribed = Convert.ToBoolean(Convert.ToInt32(reader[4]));
 
                         temp.Add(Convert.ToString(reader[5]));
                         //outpuMedicament.ActiveIngredients = ;

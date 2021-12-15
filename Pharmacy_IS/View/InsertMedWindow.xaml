@@ -27,12 +27,11 @@
         <ComboBox x:Name="manufacturer" HorizontalAlignment="Left" Height="20" Margin="150,57,0,0"  VerticalAlignment="Top" Width="250" FontFamily="Arial"/>
         <TextBox x:Name="amount" HorizontalAlignment="Left" Height="20" Margin="150,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="250" FontFamily="Arial" />
         <TextBox x:Name="medType" HorizontalAlignment="Left" Height="20" Margin="150,107,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="250" FontFamily="Arial"/>
-        <TextBox x:Name="medImage" HorizontalAlignment="Left" Height="20" Margin="150,132,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="250" FontFamily="Arial"/>
+        <TextBox x:Name="medImage" HorizontalAlignment="Left" Height="20" Margin="150,132,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184" FontFamily="Arial"/>
         <TextBox x:Name="ingredients" HorizontalAlignment="Left" Height="120" Margin="150,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" FontFamily="Arial"/>
         <CheckBox x:Name="medPrescribed" HorizontalAlignment="Left" Margin="150,284,0,0" VerticalAlignment="Top" FontFamily="Arial"/>
         <TextBox x:Name="DesctiptionTextBox" HorizontalAlignment="Left" Height="120" Margin="150,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" FontFamily="Arial"/>
         <Button x:Name="confirmButton" Content="Insert" HorizontalAlignment="Left" Margin="280,439,0,0" VerticalAlignment="Top" Width="120" FontFamily="Arial" FontWeight="Bold" FontSize="14" Click="Button_Click"/>
-
-
+        <Button Content="Show" HorizontalAlignment="Left" Margin="348,132,0,0" VerticalAlignment="Top" Width="47" RenderTransformOrigin="0.265,0.4" Click="ShowButton_Click"/>
     </Grid>
 </Window>

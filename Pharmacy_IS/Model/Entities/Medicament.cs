@@ -8,16 +8,16 @@ namespace Pharmacy_IS.Model.Entities
 {
     public class Medicament
     {
-
+        public int Id { get; set; }
         public string MedName { get; set; }
-        public int ManufacturerId { get; set; }
-        public int Amount { get; set; }
+        public string ManufacturerId { get; set; }
+        public string Amount { get; set; }
         public string MedType { get; set; }
         public string ActiveIngredients { get; set; }
         public bool IsPrescribed { get; set; }
         public string Description { get; set; }
 
-        public Medicament(string medName, int manufacturerId, int amount, string medType, string activeIngredients, bool isPrescribed, string description)
+        public Medicament(string medName, string manufacturerId, string amount, string medType, string activeIngredients, bool isPrescribed, string description)
         {
             MedName = medName;
             ManufacturerId = manufacturerId;
@@ -30,6 +30,12 @@ namespace Pharmacy_IS.Model.Entities
 
         public Medicament()
         {
+            MedName = "";
+            ManufacturerId = "";
+            Amount = "";
+            MedType = "";
+            ActiveIngredients = "";
+            Description = "";
         }
     }
 }
