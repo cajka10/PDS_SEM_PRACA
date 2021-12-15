@@ -77,6 +77,38 @@ namespace Pharmacy_IS.ViewModel.Service
             }
         }
 
+        internal Dictionary<int, string> GetManufacturers()
+        {
+            Dictionary<int, string> output = new Dictionary<int, string>();
+            try
+            {
+                _conn.Open();
+                string sql = @"select id_man as ID, NAME as Nazov
+                            from NOVAKOVA25.MANUFACTURER  ";
+                using (OracleCommand command = new OracleCommand(sql, _conn))
+                {
+                    List<string> temp = new List<string>();
+                    OracleDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        output.Add(Convert.ToInt32(reader[0]), Convert.ToString(reader[1]));
+                    }
+
+                    return output;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        }
+
         internal Medicament GetMedicament(int id)
         {          
             try
@@ -94,19 +126,23 @@ namespace Pharmacy_IS.ViewModel.Service
                                 table(med.active_ingredients) t WHERE med.id_med = 45004 ";
                 using (OracleCommand command = new OracleCommand(sql1, _conn))
                 {
+                    List<string> temp = new List<string>();
                     OracleDataReader reader = command.ExecuteReader();
-                    if (reader.Read())
+                    while (reader.Read())
                     {
                         outpuMedicament.MedName = Convert.ToString(reader[0]);
                         outpuMedicament.MedType = Convert.ToString(reader[1]);
                         outpuMedicament.Description = Convert.ToString(reader[2]);
                         outpuMedicament.ManufacturerId = Convert.ToInt32(reader[3]);
                         outpuMedicament.IsPrescribed = Convert.ToBoolean(Convert.ToUInt32(reader[4]));
-                        outpuMedicament.ActiveIngredients = Convert.ToString(reader[5]);
 
-                        return outpuMedicament;
+                        temp.Add(Convert.ToString(reader[5]));
+                        //outpuMedicament.ActiveIngredients = ;
+
+                        
                     }
-                    return null;
+                    outpuMedicament.ActiveIngredients = string.Join(", ", temp);
+                    return outpuMedicament;
                 }
             }
             catch (Exception ex)

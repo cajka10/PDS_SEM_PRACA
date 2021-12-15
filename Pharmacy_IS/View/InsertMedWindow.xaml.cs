@@ -1,4 +1,5 @@
 ﻿using Pharmacy_IS.Model.Entities;
+using Pharmacy_IS.ViewModel.Service;
 using System;
 using System.Windows;
 using System.Windows.Input;
@@ -12,9 +13,10 @@ namespace Pharmacy_IS.View
         private State state;
 
         public Medicament Medicament { get; set; }
-
+        private MedicamentService _service;
         public InsertMedWindow(State p_state)
         {
+            _service = new MedicamentService();
             state = p_state;
             InitializeComponent();
             if (state == State.Editing)
@@ -22,6 +24,9 @@ namespace Pharmacy_IS.View
                 this.heading.Content = "Editing Medicament";
                 this.confirmButton.Content = "Confirm";
             }
+            SetManufacturers();
+
+
         }
 
         public InsertMedWindow(State p_state, Medicament medicament)
@@ -35,6 +40,14 @@ namespace Pharmacy_IS.View
                 this.heading.Content = "Editing Medicament";
                 this.confirmButton.Content = "Confirm";
             }
+        }
+
+        private void SetManufacturers()
+        {
+
+            var dict = _service.GetManufacturers();
+            manufacturer.ItemsSource = dict;
+
         }
 
         private void Reload()
@@ -51,7 +64,7 @@ namespace Pharmacy_IS.View
             }
             else
             {
-                MessageBoxResult res = MessageBox.Show("Nepdoarilo sa nacitat data.");
+                MessageBoxResult res = MessageBox.Show("Nepodarilo sa nacitat data.");
             }                             
         }
 
