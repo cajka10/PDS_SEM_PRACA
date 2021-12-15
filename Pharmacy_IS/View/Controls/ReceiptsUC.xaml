@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Pharmacy_IS.View.Controls.ReceiptsUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Pharmacy_IS.View.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="690" d:DesignWidth="950">
+    <Grid>
+        <DataGrid x:Name="ReceiptsDataGrid" HorizontalAlignment="Left" Height="629" Margin="228,30,0,0" VerticalAlignment="Top" Width="694"
+                  AlternatingRowBackground="#71B0EF" FontFamily="Segoe UI SemiBold" ColumnWidth="*">
+            <DataGrid.Effect>
+                <DropShadowEffect/>
+            </DataGrid.Effect>
+        </DataGrid>
+        <Button x:Name="saleButton" Content="New Sale" HorizontalAlignment="Left" Margin="75,80,0,0" VerticalAlignment="Top" Width="118" Height="30" FontFamily="Arial" FontWeight="Bold" Click="saleButton_Click"/>
+        <Label Content="Receipts" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="75,40,0,0" FontWeight="Bold" FontSize="18"/>
+    </Grid>
+</UserControl>

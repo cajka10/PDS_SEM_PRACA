@@ -9,8 +9,8 @@
     <Grid>
         <Grid HorizontalAlignment="Left" Height="25" Margin="0,0,0,0" VerticalAlignment="Top" Width="450"  MouseDown="Grid_MouseDown" Background="#FF02369C">
             <Label x:Name="heading" Content="New Medicament" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,00,0" FontFamily="Arial" Foreground="White" FontWeight="Bold"/>
-            <Image x:Name="buttonExit" Width="15" HorizontalAlignment="Left" Margin="425,0,10,0" Source="endicon.png" MouseDown="ButtonClose_Clicked" Height="15" />
-            <Image x:Name="buttonMin" Width="15" HorizontalAlignment="Left" Margin="405,0,10,0" Source="minimize.png"  MouseDown="ButtonMin_Clicked" Height="15" />
+            <Image x:Name="buttonExit" Width="15" HorizontalAlignment="Left" Margin="425,0,10,0" Source="/Pharmacy_IS;component/Resources/endicon.png" MouseDown="ButtonClose_Clicked" Height="15" />
+            <Image x:Name="buttonMin" Width="15" HorizontalAlignment="Left" Margin="405,0,10,0" Source="/Pharmacy_IS;component/Resources/minimize.png"  MouseDown="ButtonMin_Clicked" Height="15" />
         </Grid>
         
         

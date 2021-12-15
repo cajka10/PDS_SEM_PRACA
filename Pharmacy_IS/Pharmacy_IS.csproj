@@ -77,6 +77,9 @@
     <Compile Include="View\Controls\MedicamentsUC.xaml.cs">
       <DependentUpon>MedicamentsUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Controls\ReceiptsUC.xaml.cs">
+      <DependentUpon>ReceiptsUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\StatisticsUC.xaml.cs">
       <DependentUpon>StatisticsUC.xaml</DependentUpon>
     </Compile>
@@ -92,6 +95,9 @@
     <Compile Include="View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\SaleWindow.xaml.cs">
+      <DependentUpon>SaleWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\StorageDepositWindow.xaml.cs">
       <DependentUpon>StorageDepositWindow.xaml</DependentUpon>
     </Compile>
@@ -100,6 +106,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Controls\MedicamentsUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\ReceiptsUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -132,6 +142,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SaleWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -170,9 +184,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\farmacyicon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\minimize.png" />
   </ItemGroup>
   <ItemGroup>
@@ -192,9 +203,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\receipticon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="View\endicon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

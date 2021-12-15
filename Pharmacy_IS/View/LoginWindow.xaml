@@ -9,10 +9,10 @@
     <Grid HorizontalAlignment="Left" Height="625" Margin="0" VerticalAlignment="Top" Width="880" Background="white" RenderTransformOrigin="0.495,2.823">
         <Grid HorizontalAlignment="Left" Height="50" Margin="0" VerticalAlignment="Top" Width="880" RenderTransformOrigin="0.495,2.823" MouseDown="Grid_MouseDown" Background="#FF02369C">
 
-            <Image Height="30" VerticalAlignment="Bottom" Width="30" HorizontalAlignment="Left" Margin="10,10,0,10" Source="farmacyicon.png"/>
+            <Image Height="30" VerticalAlignment="Bottom" Width="30" HorizontalAlignment="Left" Margin="10,10,0,10" Source="/Pharmacy_IS;component/Resources/farmacyicon.png"/>
             <Label Content="Le Lekáreň" Height="35" VerticalAlignment="Top" FontFamily="Arial" FontWeight="Bold" FontSize="24" Width="140" Margin="45,10,0,10" HorizontalAlignment="Left" Foreground="White"/>
-            <Image x:Name="buttonExit" Width="30" HorizontalAlignment="Left" Margin="840,10,0,10" Source="endicon.png" RenderTransformOrigin="32.571,0.149" MouseDown="ButtonClose_Clicked" Height="30" />
-            <Image x:Name="buttonMin" Width="30" HorizontalAlignment="Left" Margin="800,10,0,10" Source="minimize.png" RenderTransformOrigin="32.571,0.149" MouseDown="ButtonMin_Clicked" Height="30" />
+            <Image x:Name="buttonExit" Width="30" HorizontalAlignment="Left" Margin="840,10,0,10" Source="/Pharmacy_IS;component/Resources/endicon.png" RenderTransformOrigin="32.571,0.149" MouseDown="ButtonClose_Clicked" Height="30" />
+            <Image x:Name="buttonMin" Width="30" HorizontalAlignment="Left" Margin="800,10,0,10" Source="/Pharmacy_IS;component/Resources/minimize.png" RenderTransformOrigin="32.571,0.149" MouseDown="ButtonMin_Clicked" Height="30" />
         </Grid>
         <Grid HorizontalAlignment="Left" Height="570" Margin="0,50,0,0" VerticalAlignment="Top" Width="878" RenderTransformOrigin="0.495,2.823" MouseDown="Grid_MouseDown" Background="White">
             <Grid.ColumnDefinitions>

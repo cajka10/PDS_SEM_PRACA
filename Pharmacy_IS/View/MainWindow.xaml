@@ -54,6 +54,12 @@
                          Visibility="Hidden" 
                          RenderTransformOrigin="0.595,0.425">
             </view:StatisticsUC>
+            <view:ReceiptsUC 
+                         x:Name="ReceiptsUC" 
+                         Margin="0, 0, 0, 0" 
+                         Visibility="Hidden" 
+                         RenderTransformOrigin="0.595,0.425">
+            </view:ReceiptsUC>
         </Grid>
 
         <Grid HorizontalAlignment="Left" Height="50" Margin="0" VerticalAlignment="Top" Width="1200" RenderTransformOrigin="0.495,2.823" MouseDown="Grid_MouseDown" Background="#FF02369C" Grid.ColumnSpan="2">
@@ -92,10 +98,10 @@
                         <Label x:Name="receiptHeader" Content="Receipts" HorizontalAlignment="Right" Margin="0,0,85,0" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" FontSize="24" FontWeight="Bold"/>
                     </Grid>
                     <Grid x:Name="allReceipts" HorizontalAlignment="Right" VerticalAlignment="Top" Height="35" Width="178" Margin="0,50,0,0" Background="#FF02369C">
-                        <Label x:Name="label_allReceipts" Content="All Medicaments" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" FontSize="20" FontWeight="Bold" Background="Transparent" Margin="0,0,10,0" MouseDown="showAllMeds" />
+                        <Label x:Name="label_allReceipts" Content="Sale" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" FontSize="20" FontWeight="Bold" Background="Transparent" Margin="0,0,10,0" MouseDown="showReceiptUC" />
                     </Grid>
                     <Grid x:Name="statsReceipts" HorizontalAlignment="Right" VerticalAlignment="Top" Height="35" Width="178" Margin="0,90,0,0" Background="#FF02369C">
-                        <Label x:Name="label_statsReceipts" Content="Statistics" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" FontSize="20" FontWeight="Bold" Background="Transparent" Margin="0,0,10,0" MouseDown="showAllMeds" />
+                        <Label x:Name="label_statsReceipts" Content="Statistics" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" FontSize="20" FontWeight="Bold" Background="Transparent" Margin="0,0,10,0" MouseDown="showAllMeds" Grid.Column="1" />
                     </Grid>
                 </Grid>
             </Grid>
