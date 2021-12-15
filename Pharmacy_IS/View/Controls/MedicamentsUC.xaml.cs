@@ -44,7 +44,7 @@ namespace Pharmacy_IS.View.Controls
             InsertMedWindow insertWindow = new InsertMedWindow(State.Adding);
             if (insertWindow.ShowDialog() == true)
             {
-                _medicamentService.InsertMedicament(insertWindow.Medicament);
+                _medicamentService.InsertMedicament(insertWindow.Medicament, insertWindow.ImagePath);
             }
         }
 

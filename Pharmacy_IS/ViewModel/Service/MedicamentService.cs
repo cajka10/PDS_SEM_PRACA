@@ -22,8 +22,14 @@ namespace Pharmacy_IS.ViewModel.Service
             this.SetConnection();
         }
 
-        internal void InsertMedicament(Medicament medicament)
+        internal void InsertMedicament(Medicament medicament, string path)
         {
+            byte[] blob = new byte[0];
+            if (!path.Equals(string.Empty))
+            {
+                blob = this.GetBlobFromPath(path);
+            }
+
             try
             {
                 int temp = 0;
@@ -38,7 +44,7 @@ namespace Pharmacy_IS.ViewModel.Service
                 command.Parameters.Add("PARAM5", OracleDbType.Varchar2).Value = medicament.Amount;
                 command.Parameters.Add("PARAM6", OracleDbType.Varchar2).Value = medicament.Description;
                 command.Parameters.Add("PARAM7", OracleDbType.Varchar2).Value = medicament.ActiveIngredients;
-                command.Parameters.Add("PARAM8", OracleDbType.Blob).Value = null;
+                command.Parameters.Add("PARAM8", OracleDbType.Blob).Value = blob.Length != 0 ? blob : null;
                 command.Parameters.Add("PARAM9", OracleDbType.Int16).Value = temp;
 
                 command.ExecuteNonQuery();
@@ -52,6 +58,27 @@ namespace Pharmacy_IS.ViewModel.Service
             {
                 _conn.Close();
             }
+        }
+
+        private byte[] GetBlobFromPath(string path)
+        {
+            try
+            {
+                using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
+                {
+                    byte[] imageData = new byte[fs.Length];
+
+                    fs.Read(imageData, 0, System.Convert.ToInt32(fs.Length));
+
+                    return imageData;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return new byte[0];
         }
 
         internal void UpdateMedicament(Medicament medicament)

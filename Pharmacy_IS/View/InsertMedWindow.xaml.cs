@@ -1,7 +1,9 @@
 ﻿using Pharmacy_IS.Model.Entities;
 using Pharmacy_IS.ViewModel.Service;
 using System;
+using System.IO;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Input;
 namespace Pharmacy_IS.View
 {
@@ -12,6 +14,7 @@ namespace Pharmacy_IS.View
     {
         private State state;
         public Medicament Medicament { get; set; }
+        public string ImagePath { get; set; }
    
         private MedicamentService _service;
         public InsertMedWindow(State p_state)
@@ -60,11 +63,11 @@ namespace Pharmacy_IS.View
                 this.amount.Text = "10ml";
                 this.medType.Text = this.Medicament.MedType;
                 this.ingredients.Text = this.Medicament.ActiveIngredients;
-                this.DesctiptionTextBox.Text = this.Medicament.Description;              
+                this.DesctiptionTextBox.Text = this.Medicament.Description;
             }
             else
             {
-                MessageBoxResult res = MessageBox.Show("Nepodarilo sa nacitat data.");
+                MessageBoxResult res = System.Windows.MessageBox.Show("Nepodarilo sa nacitat data.");
             }                             
         }
 
@@ -128,6 +131,7 @@ namespace Pharmacy_IS.View
             this.Medicament.ActiveIngredients = "sirup, test";
             this.Medicament.Description = "UPDATE - test popis";
             this.Medicament.IsPrescribed = true;
+            this.ImagePath = this.medImage.Text;
 
             //TODO spracovanie do objektu/vloženie
             //cez query + spracovanie obsahu pola ingredients do nejakeho listu
@@ -154,6 +158,36 @@ namespace Pharmacy_IS.View
         {
             ShowImageWindow window = new ShowImageWindow(this.Medicament.Id);
             window.ShowDialog();
+
+        }
+
+        private void ChooseButton_Click(object sender, RoutedEventArgs e)
+        {
+            var fileContent = string.Empty;
+            var filePath = string.Empty;
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.tif;...";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    filePath = openFileDialog.FileName;
+
+                    //Read the contents of the file into a stream
+                    var fileStream = openFileDialog.OpenFile();
+
+                    using (StreamReader reader = new StreamReader(fileStream))
+                    {
+                        fileContent = reader.ReadToEnd();
+                    }
+                }
+                this.medImage.Text = openFileDialog.FileName;
+            }
 
         }
     }
