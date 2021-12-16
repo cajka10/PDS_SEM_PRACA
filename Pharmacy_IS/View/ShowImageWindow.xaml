@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pharmacy_IS.View"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="ShowImageWindow" Height="450" Width="615.042">
     <Grid>
         <Image x:Name="ImageBox" HorizontalAlignment="Left" Height="399" Margin="32,10,0,0" VerticalAlignment="Top" Width="547"/>

@@ -27,6 +27,9 @@ namespace Pharmacy_IS.View.Controls
         public MedicamentsUC()
         {
             InitializeComponent();
+            if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
+                return;
+
             _medicamentService = new MedicamentService();
             this.Reload();
 

@@ -12,7 +12,8 @@
                 <DropShadowEffect/>
             </DataGrid.Effect>
         </DataGrid>
-        <DataGrid x:Name="employeeGridTable" HorizontalAlignment="Left" Height="285" Margin="225,380,0,0" VerticalAlignment="Top" Width="695" FontFamily="Arial">
+        <DataGrid x:Name="EmployeeDataGrid" HorizontalAlignment="Left" Height="285" Margin="225,380,0,0" VerticalAlignment="Top" Width="695" FontFamily="Arial"
+                  ColumnWidth="*">
             <DataGrid.Effect>
                 <DropShadowEffect/>
             </DataGrid.Effect>

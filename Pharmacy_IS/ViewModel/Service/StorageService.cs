@@ -142,7 +142,6 @@ namespace Pharmacy_IS.ViewModel.Service
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                throw;
             }
             finally
             {

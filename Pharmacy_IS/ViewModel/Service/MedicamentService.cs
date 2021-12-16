@@ -126,7 +126,7 @@ namespace Pharmacy_IS.ViewModel.Service
             {
                 _conn.Open();
                 string sql = @"select id_med as ID,  med.NAME as Nazov, med.TYPE.type as Typ, med.DESCRIPTION as Popis, man.name as Vyrobca,
-                                is_prescribed as ""Na predpis""
+                                DECODE(is_prescribed, '1', 'Ano', 'Nie') as ""Na predpis""
                             from NOVAKOVA25.MEDICAMENT med join NOVAKOVA25.MANUFACTURER man using (id_man)";
                 using (OracleCommand command = new OracleCommand(sql, _conn))
                 {

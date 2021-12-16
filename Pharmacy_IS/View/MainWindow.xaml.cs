@@ -27,6 +27,8 @@ namespace Pharmacy_IS
         public MainWindow()
         {
             InitializeComponent();
+            if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
+                return;
 
             medsBarColapsed = true;
             medsGrid.Height = medsGridHeader.Height;

@@ -28,6 +28,9 @@ namespace Pharmacy_IS.View.Controls
         public StorageUC()
         {
             InitializeComponent();
+            if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
+                return;
+
             _storageService = new StorageService();
             this.Reload();
         }

@@ -69,5 +69,36 @@ WHERE x.final_rank <= 10";
                 _conn.Close();
             }
         }
+
+        public DataTable GetEmployeesRanking()
+        {
+            try
+            {
+                _conn.Open();
+                string sql = @"SELECT p.user_name, SUM(si.price) AS Total_income
+FROM novakova25.sales_history si
+JOIN novakova25.person p ON p.id_user = si.id_user
+WHERE si.sales_date >= TO_DATE('2017-01-01', 'yyyy-mm-dd') AND si.sales_date <= TO_DATE('2021-12-12', 'yyyy-mm-dd')
+GROUP BY p.user_name
+ORDER BY Total_income DESC";
+                using (OracleCommand command = new OracleCommand(sql, _conn))
+                {
+                    DataTable dt = new DataTable();
+                    OracleDataAdapter da = new OracleDataAdapter(command);
+                    da.Fill(dt);
+                    return dt;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        }
     }
 }
