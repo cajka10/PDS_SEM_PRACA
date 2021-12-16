@@ -35,6 +35,10 @@ namespace Pharmacy_IS.View.Controls
             var dt = this._service.GetEmployeesRanking();
             this.EmployeeDataGrid.DataContext = dt;
             this.EmployeeDataGrid.ItemsSource = dt.DefaultView;
+
+            var dt2 = this._service.GetMonthsIncome();
+            this.incomeGridTable.DataContext = dt2;
+            this.incomeGridTable.ItemsSource = dt2.DefaultView;
         }
     }
 }

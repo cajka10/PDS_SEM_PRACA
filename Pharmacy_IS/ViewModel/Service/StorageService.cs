@@ -55,6 +55,84 @@ namespace Pharmacy_IS.ViewModel.Service
             }
         }
 
+
+        internal Dictionary<int, string> getStorageMedicamentsNames()
+        {
+            Dictionary<int, string> output = new Dictionary<int, string>();
+            try
+            {
+                _conn.Open();
+                string sql = @"select id_med, nazov as Názov
+                                    from 
+                                        (
+                                        select id_storage, id_med, NVL(SUBSTR(med.NAME, 0, INSTR(med.NAME, '-')-1), med.NAME) as nazov,
+                                            med.TYPE.type as typ, med.DESCRIPTION, man.name as vyrobca, st.quantity as pocet
+                                        from NOVAKOVA25.MEDICAMENT med join NOVAKOVA25.MANUFACTURER man using(id_man)
+                                        join  NOVAKOVA25.storage st using(id_med)
+                                        where quantity > 0
+                                        order by 1
+                                        )
+                                    group by nazov, typ, vyrobca, id_med, id_storage
+                                    order by 1";
+                using (OracleCommand command = new OracleCommand(sql, _conn))
+                {
+                    List<string> temp = new List<string>();
+                    OracleDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        output.Add(Convert.ToInt32(reader[0]), Convert.ToString(reader[1]));
+                    }
+
+                    return output;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        }
+
+        internal int getItemQuantity(int id)
+        {
+
+            int output = 0;
+            try
+            {
+                _conn.Open();
+                string sql = @"select sum(quantity) from NOVAKOVA25.storage
+                               where id_med =" + id.ToString();
+
+
+                using (OracleCommand command = new OracleCommand(sql, _conn))
+                {
+                    List<string> temp = new List<string>();
+                    OracleDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        output = Convert.ToInt32(reader[0]);
+                    }
+
+                    return output;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        }
+
         internal StoredItem GetStoredItem(int id)
         {
 

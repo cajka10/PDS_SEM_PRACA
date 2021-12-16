@@ -35,13 +35,16 @@ namespace Pharmacy_IS.View
     public partial class SaleWindow : Window
     {
         MedicamentService _medicamentService;
+        StorageService _storageService;
+
         Dictionary<int, string> sortimentList;
+
         public SaleWindow()
         {
             _medicamentService = new MedicamentService();
-
+            _storageService = new StorageService();
             InitializeComponent();
-            sortimentList = _medicamentService.getMedicamentsNames();
+            sortimentList = _storageService.getStorageMedicamentsNames();
             foreach (var item in sortimentList)
             {
                 var itm = new ListBoxItem();
@@ -74,6 +77,13 @@ namespace Pharmacy_IS.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if(orderListView.Items.Count == 0)
+            {
+                MessageBox.Show("No Items to sell");
+                return;
+
+            }
+
             Dictionary<int, int> order= new Dictionary<int, int>();
             foreach(MyItem item in orderListView.Items){
                 if(order.ContainsKey(item.Id)){
@@ -84,6 +94,29 @@ namespace Pharmacy_IS.View
                     order.Add(item.Id, 1);
                 }
             }
+            bool hadAll = true;
+            int missingItem = 1;
+
+            foreach (var orderItem in order)
+            {
+                if(orderItem.Value > _storageService.getItemQuantity(orderItem.Value))
+                {
+                    missingItem = orderItem.Key;
+                    hadAll = false;
+                    break;
+                }
+            }
+            if (!hadAll)
+            {
+                MessageBox.Show("Item ID" + missingItem + "- insufficient quantity in storage");
+                return;
+            }
+            foreach(var orderItem in order)
+            {
+                //volanie na odpocet quantity zo storage
+            }
+            this.Close();
+
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
