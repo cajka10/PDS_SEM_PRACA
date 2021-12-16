@@ -97,6 +97,14 @@ Create table sale_item (
 )
 /
 
+--Altering TABLE price_list that references to storage
+ALTER TABLE price_list DROP CONSTRAINT SYS_C0066298; --id_med references to medicament.id_med;
+
+ALTER TABLE price_list RENAME COLUMN id_med TO id_storage;
+
+ALTER TABLE price_list ADD CONSTRAINT fkey_id_storage FOREIGN KEY (id_storage) REFERENCES storage(id_storage);
+
+
 grant all on manufacturer to novakova25, grofcik5, cajka10, novotnak1;
 grant all on price_list to novakova25, grofcik5, cajka10, novotnak1;
 grant all on medicament to novakova25, grofcik5, cajka10, novotnak1;
