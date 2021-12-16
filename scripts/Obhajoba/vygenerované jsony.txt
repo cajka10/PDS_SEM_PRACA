@@ -1,0 +1,27 @@
+---všetky vypísané recepty
+select json_object('patient_id' value rc_patient,
+                    'insurrance' value insurrance_num,
+                    'prescription_date' value to_char(prescription_date, 'DD.MM.YYYY'),
+                    'doctor_code' value code_doctor,
+                    'medicaments' value json_arrayagg(name))
+from e_prescription join sale_item using(id_pres) join medicament using(id_med)
+group by rc_patient, insurrance_num, prescription_date, code_doctor;
+
+---aktuálne ceny všetkých liekov
+select json_object('medicament_number' value id_med,
+		    'medicament' value med.name,
+                    'type' value med.type.type,
+                    'is_prescribed' value CASE WHEN med.is_prescribed = '0' THEN 'false' ELSE 'true' END FORMAT JSON,
+                    'manufacturer' value man.name,
+                    'amount_and_unit' value med.amount_unit,
+                    'description' value med.description,
+                    'price_euro' value  p.price)
+from price_list p join medicament med using(id_med) join manufacturer man using(id_man)  where date_to is null;
+
+---stav na sklade 
+select json_object('medicament_number' value id_med,
+                    'medicament' value name,
+                    'sum_all' value sum(storage.quantity),
+                    'expiration_dates' value json_arrayagg(to_char(storage.expiration_date, 'DD.MM.YYYY')),
+                    'quantities' value json_arrayagg(storage.quantity) )
+from medicament join storage using(id_med) group by id_med, name;
