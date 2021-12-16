@@ -57,7 +57,7 @@ namespace Pharmacy_IS.View.Controls
                 MessageBox.Show("You need to select item from the table");
                 return;
             }
-            int id = Convert.ToInt32(index["ID"]);
+            int id = Convert.ToInt32(index["Id"]);
             InsertStorageWindow insertWindow = new InsertStorageWindow(State.Editing, _storageService.GetStoredItem(id));
             if (insertWindow.ShowDialog() == true)
             {
