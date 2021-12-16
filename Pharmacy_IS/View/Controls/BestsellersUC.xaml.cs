@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pharmacy_IS.ViewModel.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,19 @@ namespace Pharmacy_IS.View.Controls
     /// </summary>
     public partial class BestsellersUC : UserControl
     {
+        private StatisticsService _service;
         public BestsellersUC()
         {
             InitializeComponent();
+            _service = new StatisticsService();
+            Reload();
+        }
+
+        private void Reload()
+        {
+            var dt = this._service.GetBestSellers();
+            this.MedicamentDataGrid.DataContext = dt;
+            this.MedicamentDataGrid.ItemsSource = dt.DefaultView;
         }
 
         private void confirmButton_Click(object sender, RoutedEventArgs e)

@@ -60,7 +60,7 @@ namespace Pharmacy_IS.View.Controls
             InsertMedWindow insertWindow = new InsertMedWindow(State.Editing, _medicamentService.GetMedicament(id));
             if (insertWindow.ShowDialog() == true)
             {
-                _medicamentService.UpdateMedicament(insertWindow.Medicament);
+                _medicamentService.UpdateMedicament(insertWindow.Medicament, insertWindow.ImagePath);
             }
         }
 

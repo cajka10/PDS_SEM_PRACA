@@ -29,9 +29,16 @@ namespace Pharmacy_IS.View
             this.Reload(id);
         }
 
-        public void Reload(int id )
+        public void Reload(int id)
         {
-            this.ImageBox.Source = _service.GetMedImage(id);
+            try
+            {
+                this.ImageBox.Source = _service.GetMedImage(id);
+            }
+            catch (Exception)
+            {
+                MessageBoxResult result = MessageBox.Show("Nepodarilo sa zobrazit obrazok.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
     }

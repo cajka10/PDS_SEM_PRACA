@@ -25,7 +25,7 @@ namespace Pharmacy_IS.ViewModel.Service
         internal void InsertMedicament(Medicament medicament, string path)
         {
             byte[] blob = new byte[0];
-            if (!path.Equals(string.Empty))
+            if (path != null && !path.Equals(string.Empty))
             {
                 blob = this.GetBlobFromPath(path);
             }
@@ -81,8 +81,14 @@ namespace Pharmacy_IS.ViewModel.Service
             return new byte[0];
         }
 
-        internal void UpdateMedicament(Medicament medicament)
+        internal void UpdateMedicament(Medicament medicament, string path)
         {
+            byte[] blob = new byte[0];
+            if (path != null && !path.Equals(string.Empty))
+            {
+                blob = this.GetBlobFromPath(path);
+            }
+
             try
             {
                 int temp = 0;
@@ -98,14 +104,15 @@ namespace Pharmacy_IS.ViewModel.Service
                 command.Parameters.Add("PARAM6", OracleDbType.Varchar2).Value = medicament.Amount;
                 command.Parameters.Add("PARAM7", OracleDbType.Varchar2).Value = medicament.Description;
                 command.Parameters.Add("PARAM8", OracleDbType.Varchar2).Value = medicament.ActiveIngredients;
-                command.Parameters.Add("PARAM9", OracleDbType.Int16).Value = temp;
+                command.Parameters.Add("PARAM9", OracleDbType.Blob).Value = blob.Length != 0 ? blob : null;          
+                command.Parameters.Add("PARAM10", OracleDbType.Int16).Value = temp;
 
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                throw;
+                return;
             }
             finally
             {
