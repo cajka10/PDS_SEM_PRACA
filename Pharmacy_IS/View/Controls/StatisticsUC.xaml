@@ -7,13 +7,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="690" d:DesignWidth="950">
     <Grid>
-        <DataGrid x:Name="incomeGridTable" HorizontalAlignment="Left" Height="285" Margin="225,80,0,0" VerticalAlignment="Top" Width="695" FontFamily="Arial">
+        <DataGrid x:Name="incomeGridTable" HorizontalAlignment="Left" Height="285" Margin="225,80,0,0" VerticalAlignment="Top" Width="695" 
+                  AlternatingRowBackground="#71B0EF" FontFamily="Segoe UI SemiBold" ColumnWidth="*">
             <DataGrid.Effect>
                 <DropShadowEffect/>
             </DataGrid.Effect>
         </DataGrid>
-        <DataGrid x:Name="EmployeeDataGrid" HorizontalAlignment="Left" Height="285" Margin="225,380,0,0" VerticalAlignment="Top" Width="695" FontFamily="Arial"
-                  ColumnWidth="*">
+        <DataGrid x:Name="EmployeeDataGrid" HorizontalAlignment="Left" Height="285" Margin="225,380,0,0" VerticalAlignment="Top" Width="695"
+                  AlternatingRowBackground="#71B0EF" FontFamily="Segoe UI SemiBold" ColumnWidth="*">
             <DataGrid.Effect>
                 <DropShadowEffect/>
             </DataGrid.Effect>

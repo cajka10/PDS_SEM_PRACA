@@ -62,7 +62,7 @@ namespace Pharmacy_IS.ViewModel.Service
             try
             {
                 _conn.Open();
-                string sql = @"select id_med, nazov as Názov
+                string sql = @"select distinct id_med, nazov as Názov
                                     from 
                                         (
                                         select id_storage, id_med, NVL(SUBSTR(med.NAME, 0, INSTR(med.NAME, '-')-1), med.NAME) as nazov,
@@ -80,7 +80,12 @@ namespace Pharmacy_IS.ViewModel.Service
                     OracleDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
+                        if (output.Count == 679)
+                        {
+                            Console.WriteLine();
+                        }
                         output.Add(Convert.ToInt32(reader[0]), Convert.ToString(reader[1]));
+
                     }
 
                     return output;
@@ -90,7 +95,7 @@ namespace Pharmacy_IS.ViewModel.Service
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                throw;
+                return null;
             }
             finally
             {
@@ -267,6 +272,34 @@ namespace Pharmacy_IS.ViewModel.Service
                 _conn.Close();
             }
         }
+
+        public DataTable GetSaleHistory()
+        {
+            try
+            {
+                _conn.Open();
+                string sql = @"select id_sale, p.name, price, sales_date
+                                from sales_history join person p using (id_user)";
+                using (OracleCommand command = new OracleCommand(sql, _conn))
+                {
+                    DataTable dt = new DataTable();
+                    OracleDataAdapter da = new OracleDataAdapter(command);
+                    da.Fill(dt);
+                    return dt;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        }
+
 
         private void SetConnection()
         {

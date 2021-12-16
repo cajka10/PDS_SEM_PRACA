@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="690" d:DesignWidth="950">
     <Grid>
-        <DataGrid x:Name="summaryDataGrid" HorizontalAlignment="Left" Height="630" Margin="225,80,0,0" VerticalAlignment="Top" Width="695" FontFamily="Arial">
+        <DataGrid x:Name="summaryDataGrid" HorizontalAlignment="Left" Height="577" Margin="225,80,0,0" VerticalAlignment="Top" Width="692" FontFamily="Arial">
             <DataGrid.Effect>
                 <DropShadowEffect/>
             </DataGrid.Effect>

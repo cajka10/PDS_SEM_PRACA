@@ -32,7 +32,6 @@ namespace Pharmacy_IS.View.Controls
                 return;
 
             _storageService = new StorageService();
-            this.Reload();
         }
 
         private void Reload()

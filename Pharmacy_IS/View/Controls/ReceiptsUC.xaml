@@ -15,5 +15,6 @@
         </DataGrid>
         <Button x:Name="saleButton" Content="New Sale" HorizontalAlignment="Left" Margin="75,80,0,0" VerticalAlignment="Top" Width="118" Height="30" FontFamily="Arial" FontWeight="Bold" Click="saleButton_Click"/>
         <Label Content="Receipts" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="75,40,0,0" FontWeight="Bold" FontSize="18"/>
+        <Button x:Name="RefreshButton" Content="Refresh" HorizontalAlignment="Left" Margin="81,608,0,0" VerticalAlignment="Top" Width="118" Height="32" FontFamily="Arial" FontWeight="Bold" Click="RefreshButton_Click"/>
     </Grid>
 </UserControl>
