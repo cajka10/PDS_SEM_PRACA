@@ -72,5 +72,10 @@ namespace Pharmacy_IS.View.Controls
         {
 
         }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Reload();
+        }
     }
 }

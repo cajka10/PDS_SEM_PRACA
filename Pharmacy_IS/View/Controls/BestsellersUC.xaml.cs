@@ -33,8 +33,8 @@ namespace Pharmacy_IS.View.Controls
         {
             //TODO uncomment
             var dt = this._service.GetBestSellers();
-            //this.MedicamentDataGrid.DataContext = dt;
-            //this.MedicamentDataGrid.ItemsSource = dt.DefaultView;
+            this.MedicamentDataGrid.DataContext = dt;
+            this.MedicamentDataGrid.ItemsSource = dt.DefaultView;
         }
 
         private void confirmButton_Click(object sender, RoutedEventArgs e)

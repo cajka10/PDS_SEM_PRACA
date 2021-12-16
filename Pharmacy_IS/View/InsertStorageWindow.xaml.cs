@@ -65,7 +65,13 @@ namespace Pharmacy_IS.View
 
         private void Setmedicaments()
         {
-            this.MedicamentComboBox.ItemsSource = _service.getMedicamentsNames();
+            var dict = _service.getMedicamentsNames();
+
+            foreach (var item in dict)
+            {
+                this.MedicamentComboBox.Items.Add(new MyMed() { Id = item.Key, Name = item.Value });
+                this.MedicamentComboBox.DisplayMemberPath = "Name";
+            }
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -90,7 +96,14 @@ namespace Pharmacy_IS.View
         {
             this.StoredItem.ExpirationDate = (DateTime)this.ExpirationDatePicker.SelectedDate;
             this.StoredItem.Quantity = int.TryParse(this.QuantityTextBox.Text, out int temp) ? temp : 0;
+            this.StoredItem.MedicamentId = ((MyMed)this.MedicamentComboBox.SelectedItem).Id;
             DialogResult = true;
         }
+    }
+
+    public class MyMed
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

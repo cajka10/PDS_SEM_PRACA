@@ -85,5 +85,10 @@ namespace Pharmacy_IS.View.Controls
             InsertMedWindow insertWindow = new InsertMedWindow(State.View, _medicamentService.GetMedicament(id));
             insertWindow.ShowDialog();
         }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Reload();
+        }
     }
 }
