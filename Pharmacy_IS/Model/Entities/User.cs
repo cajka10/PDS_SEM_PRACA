@@ -4,6 +4,8 @@
     {
         public string UserName { get; set; }
         public UserRole Role { get; set; }
+        public int Id { get; set; }
+
 
         public LoggedUser()
         {

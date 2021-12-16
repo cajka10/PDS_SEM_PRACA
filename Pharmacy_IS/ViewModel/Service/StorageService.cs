@@ -227,6 +227,47 @@ namespace Pharmacy_IS.ViewModel.Service
             }
         }
 
+        internal void sellStoredItem(StoredItem storedItem)
+        {
+            //storedItem.MedicamentId = 45005;
+            //storedItem.Quantity = 666;
+            try
+            {
+                int temp = 0;
+                _conn.Open();
+                OracleCommand command = new OracleCommand("usp_create_sale", _conn);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.Add("PARAM1", OracleDbType.Int32).Value = ((LoggedUser)App.Current.Properties["LoggedUser"]).Id;
+                DateTime localDate = DateTime.Now;
+                command.Parameters.Add("PARAM2", OracleDbType.Date).Value = localDate;
+                command.Parameters.Add("PARAM3", OracleDbType.Int16).Value = temp;
+                command.ExecuteNonQuery();
+                if(temp == 0)
+                {
+                    return;
+                }
+                command = new OracleCommand("usp_create_sale", _conn);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.Add("PARAM1", OracleDbType.Int32).Value = ((LoggedUser)App.Current.Properties["LoggedUser"]).Id;
+                command.Parameters.Add("PARAM2", OracleDbType.Date).Value = localDate;
+                command.Parameters.Add("PARAM3", OracleDbType.Int16).Value = temp;
+                command.Parameters.Add("PARAM2", OracleDbType.Int32).Value = storedItem.Quantity;
+                command.Parameters.Add("PARAM3", OracleDbType.Date).Value = storedItem.ExpirationDate;
+                command.Parameters.Add("PARAM4", OracleDbType.Int16).Value = temp;
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        }
+
         private void SetConnection()
         {
             string connString = ConfigurationManager.ConnectionStrings["OrclConnectionString"].ConnectionString;

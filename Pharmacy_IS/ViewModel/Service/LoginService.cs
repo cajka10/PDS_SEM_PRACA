@@ -42,13 +42,14 @@ namespace Pharmacy_IS.ViewModel.Service
             {
                 _conn.Open();
                 OracleCommand command = new OracleCommand() { Connection = _conn};
-                command.CommandText = $"select password, id_role, user_name from novakova25.person where USER_NAME like '{username}'";
+                command.CommandText = $"select password, id_role, user_name, id_user from novakova25.person where USER_NAME like '{username}'";
                 command.CommandType = System.Data.CommandType.Text;
                 OracleDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
                     _user.Role = (UserRole)Convert.ToInt32(reader[1]);
                     _user.UserName = username;
+                    _user.Id = Convert.ToInt32(reader[3]);
                     return Convert.ToString(reader[0]);
                 }             
             }
