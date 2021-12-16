@@ -1,4 +1,5 @@
 ﻿using Oracle.ManagedDataAccess.Client;
+using Pharmacy_IS.Model.Entities;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -53,6 +54,56 @@ namespace Pharmacy_IS.ViewModel.Service
                 _conn.Close();
             }
         }
+
+        internal StoredItem GetStoredItem(int id)
+        {
+
+            try
+            {
+                StoredItem outputItem = new StoredItem();
+                _conn.Open();
+
+
+                string sql = @"select stor.id_med, stor.quantity, stor.expiration_date
+                            FROM storage stor
+                            WHERE stor.id_storage = " + id;
+                using (OracleCommand command = new OracleCommand(sql, _conn))
+                {
+                    OracleDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        outputItem.MedicamentId = Convert.ToInt32(reader[0]);
+                        outputItem.Quantity = Convert.ToInt32(reader[1]);
+                        outputItem.ExpirationDate = Convert.ToDateTime(reader[2]);
+
+
+
+                    }
+                    return outputItem;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        }
+
+        internal void UpdateStoredItem(StoredItem storedItem)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void InsertStoredItem(StoredItem storedItem)
+        {
+            throw new NotImplementedException();
+        }
+
         private void SetConnection()
         {
             string connString = ConfigurationManager.ConnectionStrings["OrclConnectionString"].ConnectionString;

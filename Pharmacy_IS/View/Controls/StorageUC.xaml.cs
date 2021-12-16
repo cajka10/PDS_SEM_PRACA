@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace Pharmacy_IS.View.Controls
         {
             InitializeComponent();
             _storageService = new StorageService();
-            //this.Reload();
+            this.Reload();
         }
 
         private void Reload()
@@ -41,22 +42,27 @@ namespace Pharmacy_IS.View.Controls
         private void insertButton_Click(object sender, RoutedEventArgs e)
         {
             InsertStorageWindow insertWindow = new InsertStorageWindow(State.Adding);
-            if (insertWindow.DialogResult == true)
+            if (insertWindow.ShowDialog() == true)
             {
+                _storageService.InsertStoredItem(insertWindow.StoredItem);
             }
-            insertWindow.Show();
+            
         }
 
         private void updateButton_Click(object sender, RoutedEventArgs e)
         {
-            int index = this.storageDataGrid.SelectedIndex;
-            if (index == -1)
+            var index = (DataRowView)this.storageDataGrid.SelectedItem;
+            if (index == null)
             {
                 MessageBox.Show("You need to select item from the table");
                 return;
             }
-            InsertStorageWindow insertWindow = new InsertStorageWindow(State.Editing);
-            insertWindow.Show();
+            int id = Convert.ToInt32(index["ID"]);
+            InsertStorageWindow insertWindow = new InsertStorageWindow(State.Editing, _storageService.GetStoredItem(id));
+            if (insertWindow.ShowDialog() == true)
+            {
+                _storageService.UpdateStoredItem(insertWindow.StoredItem);
+            }
         }
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)

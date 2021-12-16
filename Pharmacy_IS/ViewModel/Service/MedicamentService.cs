@@ -180,7 +180,7 @@ namespace Pharmacy_IS.ViewModel.Service
             {
                 _conn.Open();
                 string sql = @"select id_med as ID, NAME as Nazov
-                            from NOVAKOVA25.MEDICAMENT";
+                            from NOVAKOVA25.MEDICAMENT fetch first 100 rows only";
                 using (OracleCommand command = new OracleCommand(sql, _conn))
                 {
                     List<string> temp = new List<string>();
@@ -216,17 +216,17 @@ namespace Pharmacy_IS.ViewModel.Service
                 //            from NOVAKOVA25.MEDICAMENT med, TABLE(select p.active_ingredients from medicament p
                 //            where p.id_med = medicament.id_med ) x  where id_med = " + id;
 
-                string sql = @" select med.NAME as Nazov, med.TYPE.type as Typ,
-                                med.DESCRIPTION as Popis, id_man, is_prescribed as ""Na predpis"", t.* 
-                                FROM novakova25.medicament med, 
-                                table(med.active_ingredients) t WHERE med.id_med = " + id;
+                //string sql = @" select med.NAME as Nazov, med.TYPE.type as Typ,
+                //                med.DESCRIPTION as Popis, id_man, is_prescribed as ""Na predpis"", t.* 
+                //                FROM novakova25.medicament med, 
+                //                table(med.active_ingredients) t WHERE med.id_med = " + id;
 
-                string sql1 = @"select med.NAME as Nazov, med.TYPE.type as Typ,
+                string sql = @"select med.NAME as Nazov, med.TYPE.type as Typ,
                             med.DESCRIPTION as Popis, med.id_man, is_prescribed as ""Na predpis"",
                             usf_get_textingredients(med.active_ingredients)
                             FROM medicament med
                             WHERE med.id_med = " + id;
-                using (OracleCommand command = new OracleCommand(sql1, _conn))
+                using (OracleCommand command = new OracleCommand(sql, _conn))
                 {
                     List<string> temp = new List<string>();
                     OracleDataReader reader = command.ExecuteReader();

@@ -18,11 +18,11 @@
             <Label Content="Expiration date:" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,95,330,0" FontFamily="Arial"/>
 
 
-            <ComboBox x:Name="manufacturer" HorizontalAlignment="Left" Height="20" Margin="120,35,0,0"  VerticalAlignment="Top" Width="250" FontFamily="Arial"/>
-            <TextBox x:Name="quantity" HorizontalAlignment="Left" Height="20" Margin="120,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="250" FontFamily="Arial" />
-            <DatePicker HorizontalAlignment="Left" Margin="120,95,0,0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="MedicamentComboBox" HorizontalAlignment="Left" Height="20" Margin="120,35,0,0"  VerticalAlignment="Top" Width="250" FontFamily="Arial"/>
+            <TextBox x:Name="QuantityTextBox" HorizontalAlignment="Left" Height="20" Margin="120,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="250" FontFamily="Arial" />
+            <DatePicker x:Name="ExpirationDatePicker" HorizontalAlignment="Left" Margin="120,95,0,0" VerticalAlignment="Top"/>
 
-            <Button x:Name="confirmButton" Content="Insert" HorizontalAlignment="Left" Margin="250,130,0,0" VerticalAlignment="Top" Width="120" FontFamily="Arial" FontWeight="Bold" FontSize="14" Click="Button_Click"/>
+            <Button x:Name="confirmButton" Content="Insert" HorizontalAlignment="Left" Margin="250,130,0,0" VerticalAlignment="Top" Width="120" FontFamily="Arial" FontWeight="Bold" FontSize="14" Click="InsertButton_Click"/>
 
         </Grid>
     </Grid>
