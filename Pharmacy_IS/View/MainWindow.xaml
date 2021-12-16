@@ -60,6 +60,12 @@
                          Visibility="Hidden" 
                          RenderTransformOrigin="0.595,0.425">
             </view:ReceiptsUC>
+            <view:StatisticsRecieptsUC 
+                         x:Name="StatisticsReceiptsUC" 
+                         Margin="0, 0, 0, 0" 
+                         Visibility="Hidden" 
+                         RenderTransformOrigin="0.595,0.425">
+            </view:StatisticsRecieptsUC>
         </Grid>
 
         <Grid HorizontalAlignment="Left" Height="50" Margin="0" VerticalAlignment="Top" Width="1200" RenderTransformOrigin="0.495,2.823" MouseDown="Grid_MouseDown" Background="#FF02369C" Grid.ColumnSpan="2">
@@ -70,8 +76,7 @@
             <Image x:Name="buttonMin" Margin="1110,10,55,10" Source="/Pharmacy_IS;component/Resources/minimize.png" RenderTransformOrigin="32.571,0.149" MouseDown="ButtonMin_Clicked" Height="30" Width="30" />
         </Grid>
         <Grid x:Name="leftPanel" HorizontalAlignment="Left" Height="690" Margin="0,50,0,0" VerticalAlignment="Top" Width="250" Background="#FF02369C" Grid.RowSpan="2">
-            <Image x:Name="buttonMenu" HorizontalAlignment="Right" Height="40" Margin="5,10,5,0" VerticalAlignment="Top" Width="40" Source="/Pharmacy_IS;component/Resources/menuicon.png" MouseDown="Image_MouseDown"/>
-            <Grid HorizontalAlignment="Left" Height="600" Margin="0,55,0,0" VerticalAlignment="Top" Width="250">
+            <Grid HorizontalAlignment="Left" Height="600" Margin="0,15,0,0" VerticalAlignment="Top" Width="250">
                 <Grid x:Name="medsGrid" HorizontalAlignment="Left" Height="250" Margin="0,5,0,0" VerticalAlignment="Top" Width="250" Background="#FF02369C">
                     <Grid x:Name="medsGridHeader" HorizontalAlignment="Right" Height="40" Margin="0,0,0,0" VerticalAlignment="Top" Width="250" MouseDown="medsBarHeightChange">
                         <Image x:Name="medIcon" HorizontalAlignment="Left" Height="40" Margin="5,5,5,0" VerticalAlignment="Top" Width="40" Source="/Pharmacy_IS;component/Resources/pillicon.png"/>
@@ -101,7 +106,7 @@
                         <Label x:Name="label_allReceipts" Content="Sale" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" FontSize="20" FontWeight="Bold" Background="Transparent" Margin="0,0,10,0" MouseDown="showReceiptUC" />
                     </Grid>
                     <Grid x:Name="statsReceipts" HorizontalAlignment="Right" VerticalAlignment="Top" Height="35" Width="178" Margin="0,90,0,0" Background="#FF02369C">
-                        <Label x:Name="label_statsReceipts" Content="Statistics" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" FontSize="20" FontWeight="Bold" Background="Transparent" Margin="0,0,10,0" Grid.Column="1" />
+                        <Label x:Name="label_statsReceipts" Content="Statistics" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" FontSize="20" FontWeight="Bold" Background="Transparent" Margin="0,0,10,0" Grid.Column="1" MouseDown="label_statsReceipts_MouseDown" />
                     </Grid>
                 </Grid>
             </Grid>

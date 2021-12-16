@@ -108,7 +108,7 @@ namespace Pharmacy_IS
             this.BestsellersUC.Visibility = Visibility.Hidden;
             this.StatisticsUC.Visibility = Visibility.Hidden;
             this.ReceiptsUC.Visibility = Visibility.Hidden;
-
+            this.StatisticsReceiptsUC.Visibility = Visibility.Hidden;
 
         }
 
@@ -119,7 +119,7 @@ namespace Pharmacy_IS
             this.BestsellersUC.Visibility = Visibility.Hidden;
             this.StatisticsUC.Visibility = Visibility.Hidden;
             this.ReceiptsUC.Visibility = Visibility.Hidden;
-
+            this.StatisticsReceiptsUC.Visibility = Visibility.Hidden;
 
         }
 
@@ -130,6 +130,7 @@ namespace Pharmacy_IS
             this.BestsellersUC.Visibility = Visibility.Visible;
             this.StatisticsUC.Visibility = Visibility.Hidden;
             this.ReceiptsUC.Visibility = Visibility.Hidden;
+            this.StatisticsReceiptsUC.Visibility = Visibility.Hidden;
 
         }
 
@@ -140,6 +141,7 @@ namespace Pharmacy_IS
             this.BestsellersUC.Visibility = Visibility.Hidden;
             this.StatisticsUC.Visibility = Visibility.Visible;
             this.ReceiptsUC.Visibility = Visibility.Hidden;
+            this.StatisticsReceiptsUC.Visibility = Visibility.Hidden;
 
         }
 
@@ -150,6 +152,19 @@ namespace Pharmacy_IS
             this.BestsellersUC.Visibility = Visibility.Hidden;
             this.StatisticsUC.Visibility = Visibility.Hidden;
             this.ReceiptsUC.Visibility = Visibility.Visible;
+            this.StatisticsReceiptsUC.Visibility = Visibility.Hidden;
+
+        }
+
+        private void label_statsReceipts_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.MedicamentsUC.Visibility = Visibility.Hidden;
+            this.StorageUC.Visibility = Visibility.Hidden;
+            this.BestsellersUC.Visibility = Visibility.Hidden;
+            this.StatisticsUC.Visibility = Visibility.Hidden;
+            this.ReceiptsUC.Visibility = Visibility.Hidden;
+            this.StatisticsReceiptsUC.Visibility = Visibility.Visible;
+
         }
 
         private void receiptsBarHeightChange(object sender, MouseButtonEventArgs e)
