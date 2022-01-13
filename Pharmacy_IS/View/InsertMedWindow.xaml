@@ -16,7 +16,7 @@
         
         <Label Content="Name:" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,30,300,0" FontFamily="Arial"/>
         <Label Content="Manufacturer:" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,55,300,0" FontFamily="Arial"/>
-        <Label Content="Amount(ml):" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,80,300,0" FontFamily="Arial"/>
+        <Label Content="Amount(ml, g, mg):" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,80,300,0" FontFamily="Arial"/>
         <Label Content="Type:" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,105,300,0" FontFamily="Arial"/>
         <Label Content="Image:" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,130,300,0" FontFamily="Arial"/>
         <Label Content="Act. ingredients:" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,155,300,0" FontFamily="Arial"/>

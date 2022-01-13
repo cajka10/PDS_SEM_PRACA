@@ -58,7 +58,11 @@ namespace Pharmacy_IS.View
                     MainWindow main = new MainWindow();
                     this.Close();
                     main.Show();
-                }           
+                }
+                else
+                {
+                    MessageBoxResult result = MessageBox.Show("Zadané heslo je nesprávne!", "Upozornenie", MessageBoxButton.OK, MessageBoxImage.Information);
+                }    
             }
             catch (NoSuchUserException ex)
             {
@@ -69,7 +73,7 @@ namespace Pharmacy_IS.View
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                MessageBoxResult result = MessageBox.Show(ex.Message, "Chyba", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBoxResult result = MessageBox.Show(ex.Message, "Nespravne heslo!", MessageBoxButton.OK, MessageBoxImage.Information);
 
             }
         }

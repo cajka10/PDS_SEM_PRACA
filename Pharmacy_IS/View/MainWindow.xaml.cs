@@ -169,6 +169,11 @@ namespace Pharmacy_IS
 
         }
 
+        private void MedicamentsUC_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void receiptsBarHeightChange(object sender, MouseButtonEventArgs e)
         {
             BitmapImage bi = new BitmapImage();

@@ -12,11 +12,21 @@ namespace Pharmacy_IS.Model.Entities
         public int MedicamentId { get; set; }
         public int Quantity { get; set; }
         public DateTime ExpirationDate { get; set; }
+        public String Name { get; set; }
 
         public StoredItem(int id, int medicamentId, int quantity, DateTime expirationDate)
         {
             Id = id;
             MedicamentId = medicamentId;
+            Quantity = quantity;
+            ExpirationDate = expirationDate;
+        }
+
+        public StoredItem(int id, int medicamentId, String Name, int quantity, DateTime expirationDate)
+        {
+            Id = id;
+            MedicamentId = medicamentId;
+            this.Name = Name;
             Quantity = quantity;
             ExpirationDate = expirationDate;
         }

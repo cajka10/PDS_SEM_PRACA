@@ -72,7 +72,7 @@
         <Grid HorizontalAlignment="Left" Height="50" Margin="0" VerticalAlignment="Top" Width="1200" RenderTransformOrigin="0.495,2.823" MouseDown="Grid_MouseDown" Background="#FF02369C" Grid.ColumnSpan="2">
 
             <Image Height="30" VerticalAlignment="Bottom" Width="30" HorizontalAlignment="Left" Margin="10,10,0,10" Source="/Pharmacy_IS;component/Resources/farmacyicon.png" OpacityMask="#FF02369C"/>
-            <Label Content="Le Lekáreň" Height="35" VerticalAlignment="Top" FontFamily="Arial" FontWeight="Bold" FontSize="24" Width="140" Margin="45,10,0,10" HorizontalAlignment="Left" Foreground="White"/>
+            <Label Content="ELekáreň" Height="35" VerticalAlignment="Top" FontFamily="Arial" FontWeight="Bold" FontSize="24" Width="140" Margin="45,10,0,10" HorizontalAlignment="Left" Foreground="White"/>
             <Image x:Name="buttonExit" Width="30" HorizontalAlignment="Left" Margin="1155,10,0,10" Source="/Pharmacy_IS;component/Resources/endicon.png" RenderTransformOrigin="32.571,0.149" MouseDown="ButtonClose_Clicked" Height="30" />
             <Image x:Name="buttonMin" Margin="1110,10,55,10" Source="/Pharmacy_IS;component/Resources/minimize.png" RenderTransformOrigin="32.571,0.149" MouseDown="ButtonMin_Clicked" Height="30" Width="30" />
         </Grid>

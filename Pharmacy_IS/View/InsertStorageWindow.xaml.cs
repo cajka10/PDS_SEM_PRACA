@@ -52,6 +52,8 @@ namespace Pharmacy_IS.View
                 this.heading.Content = "Editing Storage Record";
                 this.confirmButton.Content = "Confirm";
             }
+
+            this.Setmedicaments();//added
             this.Reload();
 
         }
@@ -60,7 +62,20 @@ namespace Pharmacy_IS.View
         {
             this.ExpirationDatePicker.SelectedDate = this.StoredItem.ExpirationDate;
             this.QuantityTextBox.Text = this.StoredItem.Quantity.ToString();
-            //this.MedicamentComboBox.SelectedItem
+            //this.MedicamentComboBox.SelectedIndex = this.MedicamentComboBox.Items.IndexOf(this.StoredItem.Name);
+            this.MedicamentComboBox.SelectedValue = this.MedicamentComboBox.Items.IndexOf(this.StoredItem.Name);
+            Console.WriteLine(this.StoredItem.Name);
+          
+
+            for(int i = 0; i < MedicamentComboBox.Items.Count; i++)
+            {
+                MyMed tmp = (MyMed) MedicamentComboBox.Items.GetItemAt(i);
+                Console.WriteLine(tmp.Name);
+                if (tmp.Name.Equals(this.StoredItem.Name))
+                {
+                    this.MedicamentComboBox.SelectedIndex = i;
+                }
+            }
         }
 
         private void Setmedicaments()
@@ -96,6 +111,9 @@ namespace Pharmacy_IS.View
         {
             this.StoredItem.ExpirationDate = (DateTime)this.ExpirationDatePicker.SelectedDate;
             this.StoredItem.Quantity = int.TryParse(this.QuantityTextBox.Text, out int temp) ? temp : 0;
+
+            Setmedicaments();
+            this.MedicamentComboBox.SelectedItem = this.StoredItem.Name;
             this.StoredItem.MedicamentId = ((MyMed)this.MedicamentComboBox.SelectedItem).Id;
             DialogResult = true;
         }

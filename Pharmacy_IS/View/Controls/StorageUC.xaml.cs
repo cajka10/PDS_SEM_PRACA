@@ -47,6 +47,7 @@ namespace Pharmacy_IS.View.Controls
             if (insertWindow.ShowDialog() == true)
             {
                 _storageService.InsertStoredItem(insertWindow.StoredItem);
+                MessageBox.Show("Medicament to storage added!");
             }
             
         }
@@ -64,12 +65,21 @@ namespace Pharmacy_IS.View.Controls
             if (insertWindow.ShowDialog() == true)
             {
                 _storageService.UpdateStoredItem(insertWindow.StoredItem);
+                MessageBox.Show("Medicament in storage updated!");
             }
         }
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
-
+            var index = (DataRowView)this.storageDataGrid.SelectedItem;
+            if (index == null)
+            {
+                MessageBox.Show("You need to select item from the table");
+                return;
+            }
+            int id = Convert.ToInt32(index["Id"]);
+            _storageService.DeleteStoredItem(id);
+            MessageBox.Show("Medicament has been removed from storage!");
         }
 
         private void RefreshButton_Click(object sender, RoutedEventArgs e)

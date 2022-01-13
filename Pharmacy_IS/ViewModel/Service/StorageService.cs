@@ -147,18 +147,21 @@ namespace Pharmacy_IS.ViewModel.Service
                 _conn.Open();
 
 
-                string sql = @"select stor.id_med, stor.quantity, stor.expiration_date
-                            FROM storage stor
+                string sql = @"select stor.id_med, m.name, stor.quantity, stor.expiration_date
+                            FROM NOVAKOVA25.storage stor
+                            JOIN NOVAKOVA25.medicament m ON m.id_med = stor.id_med
                             WHERE stor.id_storage = " + id;
                 using (OracleCommand command = new OracleCommand(sql, _conn))
                 {
                     OracleDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
+  
                         outputItem.Id = id;
                         outputItem.MedicamentId = Convert.ToInt32(reader[0]);
-                        outputItem.Quantity = Convert.ToInt32(reader[1]);
-                        outputItem.ExpirationDate = Convert.ToDateTime(reader[2]);
+                        outputItem.Name = Convert.ToString(reader[1]);
+                        outputItem.Quantity = Convert.ToInt32(reader[2]);
+                        outputItem.ExpirationDate = Convert.ToDateTime(reader[3]);
                     }
                     return outputItem;
                 }
@@ -177,7 +180,7 @@ namespace Pharmacy_IS.ViewModel.Service
 
         internal void UpdateStoredItem(StoredItem storedItem)
         {
-            storedItem.MedicamentId = 45005;
+            //storedItem.MedicamentId = 45005;
             //storedItem.Quantity = 666;
             try
             {
@@ -221,6 +224,33 @@ namespace Pharmacy_IS.ViewModel.Service
                 command.Parameters.Add("PARAM4", OracleDbType.Int16).Value = temp;
 
                 command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        }
+
+        internal void DeleteStoredItem(int StoredItemId)
+        {
+            //storedItem.MedicamentId = 45005;
+            //storedItem.Quantity = 666;
+            try
+            {
+                int status = 0;
+                _conn.Open();
+                OracleCommand command = new OracleCommand("usp_delete_storage_item", _conn);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.Add("PARAM1", OracleDbType.Int32).Value = StoredItemId;
+                command.Parameters.Add("out", OracleDbType.Int16).Value = ParameterDirection.Output;
+                command.ExecuteNonQuery();
+                status = int.Parse(command.Parameters["out"].Value.ToString());
+
             }
             catch (Exception ex)
             {

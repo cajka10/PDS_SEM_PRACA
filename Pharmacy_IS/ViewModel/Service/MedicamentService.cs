@@ -127,7 +127,7 @@ namespace Pharmacy_IS.ViewModel.Service
                 _conn.Open();
                 string sql = @"select id_med as ID,  med.NAME as Nazov, med.TYPE.type as Typ, med.DESCRIPTION as Popis, man.name as Vyrobca,
                                 DECODE(is_prescribed, '1', 'Ano', 'Nie') as ""Na predpis""
-                            from NOVAKOVA25.MEDICAMENT med join NOVAKOVA25.MANUFACTURER man using (id_man)";
+                            from NOVAKOVA25.MEDICAMENT med join NOVAKOVA25.MANUFACTURER man using (id_man) ORDER BY 1 DESC";
                 using (OracleCommand command = new OracleCommand(sql, _conn))
                 {
                     DataTable dt = new DataTable();
@@ -146,6 +146,46 @@ namespace Pharmacy_IS.ViewModel.Service
             {
                 _conn.Close();
             }
+        }
+
+        internal Boolean deleteMedicament(int id)
+        {
+            try
+            {
+                int status = 0;
+                _conn.Open();
+                OracleCommand command = new OracleCommand("usp_delete_medicament", _conn);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.Add("PARAM1", OracleDbType.Int32).Value = id;
+                command.Parameters.Add("out", OracleDbType.Int16).Value = ParameterDirection.Output;
+                command.ExecuteNonQuery();
+                status = int.Parse(command.Parameters["out"].Value.ToString());
+
+
+                command.ExecuteNonQuery();
+
+                if (status == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            finally
+            {
+                _conn.Close();
+            }
+
+
         }
 
         internal Dictionary<string, string> GetManufacturers()
@@ -187,7 +227,7 @@ namespace Pharmacy_IS.ViewModel.Service
             {
                 _conn.Open();
                 string sql = @"select id_med as ID, NAME as Nazov
-                            from NOVAKOVA25.MEDICAMENT fetch first 100 rows only";
+                            from NOVAKOVA25.MEDICAMENT order by 1 DESC fetch first 100 rows only";
                 using (OracleCommand command = new OracleCommand(sql, _conn))
                 {
                     List<string> temp = new List<string>();

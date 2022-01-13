@@ -48,6 +48,7 @@ namespace Pharmacy_IS.View.Controls
             if (insertWindow.ShowDialog() == true)
             {
                 _medicamentService.InsertMedicament(insertWindow.Medicament, insertWindow.ImagePath);
+                MessageBox.Show("Medicament has been inserted!");
             }
         }
 
@@ -64,18 +65,32 @@ namespace Pharmacy_IS.View.Controls
             if (insertWindow.ShowDialog() == true)
             {
                 _medicamentService.UpdateMedicament(insertWindow.Medicament, insertWindow.ImagePath);
+                MessageBox.Show("Medicament has been updated!");
             }
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            int index = this.MedicamentDataGrid.SelectedIndex;
-            if (index == -1)
+            var index = (DataRowView)this.MedicamentDataGrid.SelectedItem;
+            int id = Convert.ToInt32(index["ID"]);
+            if (id == -1)
             {
                 MessageBox.Show("You need to select item from the table");
                 return;
             }
             //TODO vykonat vymazanie refreshnut tabulku
+            //Medicament Service delete id
+
+           if( _medicamentService.deleteMedicament(id) == true)
+            {
+                MessageBox.Show("Medicament has been removed from the table");
+            }
+            else
+            {
+                MessageBox.Show("Failed to remove!");
+            }
+
+            this.Reload();
         }
 
         private void MedicamentDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
