@@ -27,7 +27,7 @@
 
         <DatePicker x:Name="datepickerFrom" HorizontalAlignment="Left" Margin="350,50,0,0" VerticalAlignment="Top"/>
         <DatePicker x:Name="datepickeTo" HorizontalAlignment="Left" Margin="570,50,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="filterButton" Content="Filter" HorizontalAlignment="Left" Margin="710,52,0,0" VerticalAlignment="Top" Width="100" FontFamily="Arial" FontWeight="Bold" FontSize="14" />
+        <Button x:Name="filterButton" Content="Filter" HorizontalAlignment="Left" Margin="710,52,0,0" VerticalAlignment="Top" Width="100" FontFamily="Arial" FontWeight="Bold" FontSize="14" Click="Filter" />
 
     </Grid>
 </UserControl>

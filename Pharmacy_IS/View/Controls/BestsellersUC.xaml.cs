@@ -31,15 +31,33 @@ namespace Pharmacy_IS.View.Controls
 
         private void Reload()
         {
+
+            String datef = null;
+            String dateTo = null;
+
+            if (datepickerFrom.Text.Length > 2)
+            {
+                datef = datepickerFrom.Text.Replace(" ", "");
+            }
+
+            if (datepickeTo.Text.Length > 2)
+            {
+                dateTo = datepickeTo.Text.Replace(" ", "");
+            }
+
+            Console.WriteLine("From: " + datef);//10. 1. 2018
+            //22. 1. 2022
+            Console.WriteLine("To: " + dateTo);
+
             //TODO uncomment
-            var dt = this._service.GetBestSellers();
+            var dt = this._service.GetBestSellers(datef, dateTo);
             this.MedicamentDataGrid.DataContext = dt;
             this.MedicamentDataGrid.ItemsSource = dt.DefaultView;
         }
 
         private void confirmButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Reload();
         }
     }
 }
