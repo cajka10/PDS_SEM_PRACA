@@ -232,7 +232,7 @@ namespace Pharmacy_IS.ViewModel.Service
             }
         }
 
-        internal void sellStoredItem(StoredItem storedItem)
+        internal void SellStoredItem(Dictionary<int, int> orderList)
         {
             //storedItem.MedicamentId = 45005;
             //storedItem.Quantity = 666;
@@ -246,22 +246,46 @@ namespace Pharmacy_IS.ViewModel.Service
                 command.Parameters.Add("PARAM1", OracleDbType.Int32).Value = ((LoggedUser)App.Current.Properties["LoggedUser"]).Id;
                 DateTime localDate = DateTime.Now;
                 command.Parameters.Add("PARAM2", OracleDbType.Date).Value = localDate;
-                command.Parameters.Add("PARAM3", OracleDbType.Int16).Value = temp;
+                command.Parameters.Add("out", OracleDbType.Int16).Value = ParameterDirection.Output;
                 command.ExecuteNonQuery();
-                if(temp == 0)
+                temp = int.Parse(command.Parameters["out"].Value.ToString());
+                int result = 0;
+                double totalPrice = 0;
+                if(temp != 0)
                 {
-                    return;
-                }
-                command = new OracleCommand("usp_create_sale", _conn);
-                command.CommandType = CommandType.StoredProcedure;
+                    foreach (var item in orderList)
+                    {
+                        command = new OracleCommand("usp_create_sale_item", _conn);
+                        command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.Add("PARAM1", OracleDbType.Int32).Value = ((LoggedUser)App.Current.Properties["LoggedUser"]).Id;
-                command.Parameters.Add("PARAM2", OracleDbType.Date).Value = localDate;
-                command.Parameters.Add("PARAM3", OracleDbType.Int16).Value = temp;
-                command.Parameters.Add("PARAM2", OracleDbType.Int32).Value = storedItem.Quantity;
-                command.Parameters.Add("PARAM3", OracleDbType.Date).Value = storedItem.ExpirationDate;
-                command.Parameters.Add("PARAM4", OracleDbType.Int16).Value = temp;
-                command.ExecuteNonQuery();
+                        command.Parameters.Add("PARAM1", OracleDbType.Int32).Value = item.Key;
+                        command.Parameters.Add("PARAM2", OracleDbType.Int32).Value = temp;
+                        command.Parameters.Add("PARAM3", OracleDbType.Int16).Value = null;
+                        command.Parameters.Add("PARAM2", OracleDbType.Int32).Value = item.Value;
+                        command.Parameters.Add("PARAM3", OracleDbType.Varchar2).Value ="";
+                        command.Parameters.Add("out", OracleDbType.Int16).Value = ParameterDirection.Output;
+                        command.ExecuteNonQuery();
+
+                        result = int.Parse(command.Parameters["out"].Value.ToString());
+                    }
+
+                    if (result != 0)
+                    {
+                        command = new OracleCommand("usp_update_sale_price", _conn);
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.Add("PARAM1", OracleDbType.Int32).Value = temp;
+                        command.Parameters.Add("out", OracleDbType.Double).Value = ParameterDirection.Output;
+
+                        command.ExecuteNonQuery();
+                        string outPut = command.Parameters["out"].Value.ToString();
+                        Console.WriteLine(outPut);
+                        totalPrice = double.Parse(outPut);
+                    }
+                }
+
+
+
             }
             catch (Exception ex)
             {

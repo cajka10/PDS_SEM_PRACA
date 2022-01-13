@@ -36,6 +36,7 @@ namespace Pharmacy_IS.View
     {
         MedicamentService _medicamentService;
         StorageService _storageService;
+        public Dictionary<int, int> Order { get; set; }
 
         Dictionary<int, string> sortimentList;
 
@@ -43,6 +44,8 @@ namespace Pharmacy_IS.View
         {
             _medicamentService = new MedicamentService();
             _storageService = new StorageService();
+            Order = new Dictionary<int, int>();
+
             InitializeComponent();
             sortimentList = _storageService.getStorageMedicamentsNames();
             foreach (var item in sortimentList)
@@ -75,29 +78,28 @@ namespace Pharmacy_IS.View
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
             if(orderListView.Items.Count == 0)
             {
                 MessageBox.Show("No Items to sell");
                 return;
-
             }
 
-            Dictionary<int, int> order= new Dictionary<int, int>();
+            Order = new Dictionary<int, int>();
             foreach(MyItem item in orderListView.Items){
-                if(order.ContainsKey(item.Id)){
-                    order[item.Id]++;
+                if(Order.ContainsKey(item.Id)){
+                    Order[item.Id]++;
                 }
                 else
                 {
-                    order.Add(item.Id, 1);
+                    Order.Add(item.Id, 1);
                 }
             }
             bool hadAll = true;
             int missingItem = 1;
 
-            foreach (var orderItem in order)
+            foreach (var orderItem in Order)
             {
                 if(orderItem.Value > _storageService.getItemQuantity(orderItem.Value))
                 {
@@ -111,11 +113,10 @@ namespace Pharmacy_IS.View
                 MessageBox.Show("Item ID" + missingItem + "- insufficient quantity in storage");
                 return;
             }
-            foreach(var orderItem in order)
-            {
-                //volanie na odpocet quantity zo storage
-            }
-            this.Close();
+
+            
+
+            this.DialogResult  = true;
 
         }
 

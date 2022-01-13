@@ -38,7 +38,11 @@ namespace Pharmacy_IS.View.Controls
         private void saleButton_Click(object sender, RoutedEventArgs e)
         {
             SaleWindow insertWindow = new SaleWindow();
-            insertWindow.Show();
+            if (insertWindow.ShowDialog() == true)
+            {
+                _storageService.SellStoredItem(insertWindow.Order);
+            }
+            
         }
 
         private void RefreshButton_Click(object sender, RoutedEventArgs e)
