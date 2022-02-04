@@ -10,7 +10,7 @@
         <Grid HorizontalAlignment="Left" Height="50" Margin="0" VerticalAlignment="Top" Width="880" RenderTransformOrigin="0.495,2.823" MouseDown="Grid_MouseDown" Background="#FF02369C">
 
             <Image Height="30" VerticalAlignment="Bottom" Width="30" HorizontalAlignment="Left" Margin="10,10,0,10" Source="/Pharmacy_IS;component/Resources/farmacyicon.png"/>
-            <Label Content="Le Lekáreň" Height="35" VerticalAlignment="Top" FontFamily="Arial" FontWeight="Bold" FontSize="24" Width="140" Margin="45,10,0,10" HorizontalAlignment="Left" Foreground="White"/>
+            <Label Content="ELekáreň" Height="35" VerticalAlignment="Top" FontFamily="Arial" FontWeight="Bold" FontSize="24" Width="140" Margin="45,10,0,10" HorizontalAlignment="Left" Foreground="White"/>
             <Image x:Name="buttonExit" Width="30" HorizontalAlignment="Left" Margin="840,10,0,10" Source="/Pharmacy_IS;component/Resources/endicon.png" RenderTransformOrigin="32.571,0.149" MouseDown="ButtonClose_Clicked" Height="30" />
             <Image x:Name="buttonMin" Width="30" HorizontalAlignment="Left" Margin="800,10,0,10" Source="/Pharmacy_IS;component/Resources/minimize.png" RenderTransformOrigin="32.571,0.149" MouseDown="ButtonMin_Clicked" Height="30" />
         </Grid>
@@ -18,13 +18,13 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Label Content="User Name:" HorizontalAlignment="Center" Margin="-140,180,0,0" VerticalAlignment="Top" FontSize="18" FontFamily="Arial" FontWeight="Bold" Width="110" Height="30" HorizontalContentAlignment="Center"/>
-            <Label Content="Login" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,123,0,0" FontFamily="Arial Black" FontSize="24" Width="85" Height="40" FontWeight="Bold"/>
-            <TextBox x:Name="UserNameTextBox" HorizontalAlignment="Center" Height="30" Margin="0,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" BorderBrush="#FF0536C8" SelectionBrush="#FF02369C" FontFamily="Arial" FontSize="18" HorizontalContentAlignment="Center"/>
-            <Label Content="Password:" HorizontalAlignment="Center" Margin="-140,270,0,0" VerticalAlignment="Top" FontSize="18" FontFamily="Arial" FontWeight="Bold" Width="110" Height="30" HorizontalContentAlignment="Center"/>
-            <PasswordBox x:Name="PasswordTextBox" HorizontalAlignment="Center" Margin="0,305,0,0" VerticalAlignment="Top" Width="250" Height="30" FontFamily="Arial" FontSize="18" SelectionBrush="#FF02369C" BorderBrush="#FF02369C" HorizontalContentAlignment="Center"/>
-            <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Center" Margin="0,355,0,0" VerticalAlignment="Top" Width="270" Height="35" Background="#FF02369C" FontFamily="Arial" FontSize="24" FontWeight="Bold" Click="LoginButton_Click" Foreground="#FFFDFDFD"/>
-            <Image Height="50" VerticalAlignment="Bottom" Width="50" HorizontalAlignment="Center" Margin="413,100,415,700" Source="farmacyicon.png"/>
+            <Label Content="User Name:" HorizontalAlignment="Center" Margin="314,180,454,0" VerticalAlignment="Top" FontSize="18" FontFamily="Arial" FontWeight="Bold" Width="110" Height="30" HorizontalContentAlignment="Center"/>
+            <Label Content="Login" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="396,123,396,0" FontFamily="Arial Black" FontSize="24" Width="86" Height="40" FontWeight="Bold"/>
+            <TextBox x:Name="UserNameTextBox" HorizontalAlignment="Center" Height="30" Margin="314,215,314,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" BorderBrush="#FF0536C8" SelectionBrush="#FF02369C" FontFamily="Arial" FontSize="18" HorizontalContentAlignment="Center"/>
+            <Label Content="Password:" HorizontalAlignment="Center" Margin="314,270,454,0" VerticalAlignment="Top" FontSize="18" FontFamily="Arial" FontWeight="Bold" Width="110" Height="30" HorizontalContentAlignment="Center"/>
+            <PasswordBox x:Name="PasswordTextBox" HorizontalAlignment="Center" Margin="314,305,314,0" VerticalAlignment="Top" Width="250" Height="30" FontFamily="Arial" FontSize="18" SelectionBrush="#FF02369C" BorderBrush="#FF02369C" HorizontalContentAlignment="Center"/>
+            <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Center" Margin="304,355,304,0" VerticalAlignment="Top" Width="270" Height="35" Background="#FF02369C" FontFamily="Arial" FontSize="24" FontWeight="Bold" Click="LoginButton_Click" Foreground="#FFFDFDFD"/>
+            <Image Height="50" VerticalAlignment="Bottom" Width="50" HorizontalAlignment="Center" Margin="413,-180,415,700" Source="/Pharmacy_IS;component/Resources/farmacyicon.png"/>
 
         </Grid>
     </Grid>

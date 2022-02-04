@@ -21,9 +21,11 @@ namespace Pharmacy_IS.View
     public partial class ShowImageWindow : Window
     {
         private MedicamentService _service;
+        public int valid;
 
         public ShowImageWindow(int id)
         {
+            valid = 0;
             _service = new MedicamentService();
             InitializeComponent();
             this.Reload(id);
@@ -34,11 +36,18 @@ namespace Pharmacy_IS.View
             try
             {
                 this.ImageBox.Source = _service.GetMedImage(id);
+                valid = 1;
             }
             catch (Exception)
             {
-                MessageBoxResult result = MessageBox.Show("Nepodarilo sa zobrazit obrazok.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.valid = 0;
+                MessageBoxResult result = MessageBox.Show("Pre zadaný liek nie je obrázok v DB.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        public int isValid(int id)
+        {
+            return this.valid;
         }
 
     }

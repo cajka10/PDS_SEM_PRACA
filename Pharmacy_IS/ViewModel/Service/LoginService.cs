@@ -14,6 +14,7 @@ namespace Pharmacy_IS.ViewModel.Service
     {
         private OracleConnection _conn;
         private LoggedUser _user;
+
         public LoginService()
         {
             this.setConnection();

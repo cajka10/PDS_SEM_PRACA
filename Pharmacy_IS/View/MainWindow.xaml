@@ -35,7 +35,7 @@
                          x:Name="MedicamentsUC" 
                          Margin="0, 0, 0, 0" 
                          Visibility="Visible" 
-                         RenderTransformOrigin="0.595,0.425">
+                         RenderTransformOrigin="0.595,0.425" Loaded="MedicamentsUC_Loaded_1">
             </view:MedicamentsUC>
             <view:StorageUC 
                          x:Name="StorageUC" 
@@ -55,6 +55,12 @@
                          Visibility="Hidden" 
                          RenderTransformOrigin="0.595,0.425">
             </view:StatisticsUC>
+            <view:MedApplicationUC
+                 x:Name="MedApplicationUC" 
+                         Margin="0, 0, 0, 0" 
+                         Visibility="Hidden" 
+                         RenderTransformOrigin="0.595,0.425">
+            </view:MedApplicationUC>
             <view:ReceiptsUC 
                          x:Name="ReceiptsUC" 
                          Margin="0, 0, 0, 0" 
@@ -78,7 +84,7 @@
         </Grid>
         <Grid x:Name="leftPanel" HorizontalAlignment="Left" Height="690" Margin="0,50,0,0" VerticalAlignment="Top" Width="250" Background="#FF02369C" Grid.RowSpan="2">
             <Grid HorizontalAlignment="Left" Height="600" Margin="0,15,0,0" VerticalAlignment="Top" Width="250">
-                <Grid x:Name="medsGrid" HorizontalAlignment="Left" Height="250" Margin="0,5,0,0" VerticalAlignment="Top" Width="250" Background="#FF02369C">
+                <Grid x:Name="medsGrid" HorizontalAlignment="Left" Height="282" Margin="0,5,0,0" VerticalAlignment="Top" Width="250" Background="#FF02369C">
                     <Grid x:Name="medsGridHeader" HorizontalAlignment="Right" Height="40" Margin="0,0,0,0" VerticalAlignment="Top" Width="250" MouseDown="medsBarHeightChange">
                         <Image x:Name="medIcon" HorizontalAlignment="Left" Height="40" Margin="5,5,5,0" VerticalAlignment="Top" Width="40" Source="/Pharmacy_IS;component/Resources/pillicon.png"/>
                         <Image x:Name="arrowIconMeds" Height="30" Margin="0,5,5,0" VerticalAlignment="Top" Width="30" Source="/Pharmacy_IS;component/Resources/arrowicon.png" RenderTransformOrigin="-0.83,2.07" HorizontalAlignment="Right"/>
@@ -95,9 +101,14 @@
                     </Grid>
                     <Grid x:Name="stats" HorizontalAlignment="Right" VerticalAlignment="Top" Height="35" Width="183" Margin="0,170,0,0" Background="#FF02369C">
                         <Label x:Name="label_stats" Content="Statistics" Foreground="White" FontFamily="Arial" FontSize="20" FontWeight="Bold" Background="Transparent" Margin="75,0,10,0" MouseDown="showStatistics" />
+
                     </Grid>
+                    <Grid x:Name="application" HorizontalAlignment="Right" VerticalAlignment="Top" Height="35" Width="183" Margin="0,215,10,0" Background="#FF02369C">
+                        <Label x:Name="label_app" Content="Med Application" Foreground="White" FontFamily="Arial" FontSize="20" FontWeight="Bold" Background="Transparent" Margin="20,-10,0,10" MouseDown="showMedInfo" />
+                    </Grid>
+
                 </Grid>
-                <Grid x:Name="receiptsGrid" HorizontalAlignment="Left" Height="250" Margin="0,250,0,0" VerticalAlignment="Top" Width="250" Background="#FF02369C">
+                <Grid x:Name="receiptsGrid" HorizontalAlignment="Left" Height="281" Margin="0,309,0,0" VerticalAlignment="Top" Width="250" Background="#FF02369C">
                     <Grid x:Name="receiptsGridHeader" HorizontalAlignment="Left" Height="40" Margin="0" VerticalAlignment="Top" Width="250" MouseDown="receiptsBarHeightChange">
                         <Image x:Name="receiptIcon" HorizontalAlignment="Left" Height="35" Margin="10,5,5,0" VerticalAlignment="Top" Width="40" Source="/Pharmacy_IS;component/Resources/receipticon.png" StretchDirection="DownOnly"/>
                         <Image x:Name="arrowIconReceipt" Height="30" Margin="0,5,5,0" VerticalAlignment="Top" Width="30" Source="/Pharmacy_IS;component/Resources/arrowicon.png" RenderTransformOrigin="-0.83,2.07" HorizontalAlignment="Right"/>

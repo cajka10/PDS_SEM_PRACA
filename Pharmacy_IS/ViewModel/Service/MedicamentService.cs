@@ -220,6 +220,82 @@ namespace Pharmacy_IS.ViewModel.Service
             }
         }
 
+        internal Dictionary<string, string> getMedicamentData()
+        {
+            Dictionary<string, string> output = new Dictionary<string, string>();
+            try
+            {
+                _conn.Open();
+                string sql = @"select id, NAME as Nazov
+                            from NOVAKOVA25.MEDICAMENT  ";
+                using (OracleCommand command = new OracleCommand(sql, _conn))
+                {
+                    List<string> temp = new List<string>();
+                    OracleDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        output.Add(Convert.ToString(reader[0]), Convert.ToString(reader[1]));
+                    }
+
+                    return output;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        }
+
+
+        internal double getMedicamentPrice(string name)
+        {
+            try
+            {
+                Console.WriteLine("Med is: " + name);
+                _conn.Open();
+                string sql = @"select price
+                            from NOVAKOVA25.MEDICAMENT 
+                           JOIN NOVAKOVA25.price_list using(id_med) WHERE NAME = '" + name + "'" ;
+                using (OracleCommand command = new OracleCommand(sql, _conn))
+                {
+                    List<string> temp = new List<string>();
+                    OracleDataReader reader = command.ExecuteReader();
+                    
+                    double price = 0;
+
+                    while (reader.Read())
+                    {
+                        string data = Convert.ToString(reader[0]);
+                        //data = data.Replace(',', '.');
+                        price = Convert.ToDouble(data);
+                        break;
+                    }
+
+                    
+                    if (price == null)
+                    {
+                        return 0;
+                    }
+                    return price;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        } 
         internal Dictionary<int, string> getMedicamentsNames()
         {
             Dictionary<int, string> output = new Dictionary<int, string>();

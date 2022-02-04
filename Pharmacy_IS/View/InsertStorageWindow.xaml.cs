@@ -114,7 +114,7 @@ namespace Pharmacy_IS.View
 
             Setmedicaments();
             this.MedicamentComboBox.SelectedItem = this.StoredItem.Name;
-            this.StoredItem.MedicamentId = ((MyMed)this.MedicamentComboBox.SelectedItem).Id;
+            this.StoredItem.MedicamentId = ((MyMed)this.MedicamentComboBox.SelectedItem).Id; //Null reference not init
             DialogResult = true;
         }
     }

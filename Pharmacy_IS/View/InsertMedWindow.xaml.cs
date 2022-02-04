@@ -172,7 +172,12 @@ namespace Pharmacy_IS.View
         private void ShowButton_Click(object sender, RoutedEventArgs e)
         {
             ShowImageWindow window = new ShowImageWindow(this.Medicament.Id);
-            window.ShowDialog();
+
+            if (window.isValid(this.Medicament.Id) > 0)
+            {
+                window.ShowDialog();
+            }
+            //window.ShowDialog();
 
         }
 

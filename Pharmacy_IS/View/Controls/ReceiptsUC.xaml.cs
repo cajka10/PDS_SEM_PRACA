@@ -41,6 +41,7 @@ namespace Pharmacy_IS.View.Controls
             if (insertWindow.ShowDialog() == true)
             {
                 _storageService.SellStoredItem(insertWindow.Order);
+                MessageBox.Show("Order has been successful!");
             }
             
         }

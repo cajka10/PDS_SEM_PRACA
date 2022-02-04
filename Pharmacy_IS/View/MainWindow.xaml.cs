@@ -111,6 +111,8 @@ namespace Pharmacy_IS
             this.StatisticsUC.Visibility = Visibility.Hidden;
             this.ReceiptsUC.Visibility = Visibility.Hidden;
             this.StatisticsReceiptsUC.Visibility = Visibility.Hidden;
+            this.MedApplicationUC.Visibility = Visibility.Hidden;
+         
 
         }
 
@@ -122,6 +124,7 @@ namespace Pharmacy_IS
             this.StatisticsUC.Visibility = Visibility.Hidden;
             this.ReceiptsUC.Visibility = Visibility.Hidden;
             this.StatisticsReceiptsUC.Visibility = Visibility.Hidden;
+            this.MedApplicationUC.Visibility = Visibility.Hidden;
 
         }
 
@@ -133,6 +136,7 @@ namespace Pharmacy_IS
             this.StatisticsUC.Visibility = Visibility.Hidden;
             this.ReceiptsUC.Visibility = Visibility.Hidden;
             this.StatisticsReceiptsUC.Visibility = Visibility.Hidden;
+            this.MedApplicationUC.Visibility = Visibility.Hidden;
 
         }
 
@@ -144,6 +148,7 @@ namespace Pharmacy_IS
             this.StatisticsUC.Visibility = Visibility.Visible;
             this.ReceiptsUC.Visibility = Visibility.Hidden;
             this.StatisticsReceiptsUC.Visibility = Visibility.Hidden;
+            this.MedApplicationUC.Visibility = Visibility.Hidden;
 
         }
 
@@ -155,6 +160,7 @@ namespace Pharmacy_IS
             this.StatisticsUC.Visibility = Visibility.Hidden;
             this.ReceiptsUC.Visibility = Visibility.Visible;
             this.StatisticsReceiptsUC.Visibility = Visibility.Hidden;
+            this.MedApplicationUC.Visibility = Visibility.Hidden;
 
         }
 
@@ -166,10 +172,28 @@ namespace Pharmacy_IS
             this.StatisticsUC.Visibility = Visibility.Hidden;
             this.ReceiptsUC.Visibility = Visibility.Hidden;
             this.StatisticsReceiptsUC.Visibility = Visibility.Visible;
+            this.MedApplicationUC.Visibility = Visibility.Hidden;
 
         }
 
+        private void showMedInfo(object sender, MouseButtonEventArgs e)
+        {
+            this.MedicamentsUC.Visibility = Visibility.Hidden;
+            this.StorageUC.Visibility = Visibility.Hidden;
+            this.BestsellersUC.Visibility = Visibility.Hidden;
+            this.StatisticsUC.Visibility = Visibility.Hidden;
+            this.ReceiptsUC.Visibility = Visibility.Hidden;
+            this.StatisticsReceiptsUC.Visibility = Visibility.Hidden;
+            this.MedicamentsUC.Visibility = Visibility.Hidden;
+            this.MedApplicationUC.Visibility = Visibility.Visible;
+        }
+
         private void MedicamentsUC_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MedicamentsUC_Loaded_1(object sender, RoutedEventArgs e)
         {
 
         }
